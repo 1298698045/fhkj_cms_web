@@ -7,11 +7,11 @@
     <!-- <title>新闻详情</title> -->
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
-    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/head.css">
-    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/footer.css">
+    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
+    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/aside.css">
+    <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css">
+    <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/journalismDetail.css">
-    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/pagination.css">
-    <script type="text/javascript" src="${base}/static/plugins/vue/2.6.9/vue.min.js"></script>
 </head>
 <body>
     <div id="app" class="wrap" v-cloak>
@@ -31,60 +31,35 @@
                                 <span>
                                     发布时间：${(field.date?string("yyyy-MM-dd"))!}
                                 </span>
-                                <span>
+                                <!-- <span>
                                     来源：${field.source}
                                 </span>
                                 <span>
                                     点击数： ${field.hit} 次
-                                </span>
+                                </span> -->
                             </p>
-                            <div class="r_img">
-                                <span class="time">分享到：</span>
-                                <a class="bds_tsina" subject="文章标题" data-cmd="tsina" title="微博"></a>
-                                <a class="bds_qzone" subject="文章标题" data-cmd="qzone" title="QQ空间"></a>
-                            </div>
                         </div>
                         <div class="hr">
 
                         </div>
-                        <div class="article" desc="${field.descrip}">
+                        <div class="article">
                             ${field.content}
-                            <!--
-                            <p class="indent">
-                                2月24日上午，山西省中医院召开党委扩大会议，对巡视工作进行了专题部署。院领导班子全体成员及党委办、院办、人事科
-                            </p>
-                            <div class="imgs">
-                                <img src="/images/newsPhoto.png" alt="">
-                            </div>
-                            -->
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <p class="time">&nbsp;</p>
                             <div class="r_img">
                                 <span class="time">分享到：</span>
                                 <a class="bds_tsina" subject="文章标题" data-cmd="tsina" title="微博"></a>
                                 <a class="bds_qzone" subject="文章标题" data-cmd="qzone" title="QQ空间"></a>
                             </div>
-                        </div>
-                        <div class="hr"></div>
-                        <!-- <div class="next">
-                            <#if pre.link?has_content>
-                            <p class="text" @click="goto('{ms:global.url/}${pre.link}')">上一篇：${pre.title}</a></p>
-                            <#else>
-                            <p class="text">上一篇：没有了</p>
-                            </#if>
-                            <#if next.link?has_content>
-                            <p class="text" @click="goto('{ms:global.url/}${next.link}')">下一篇：${next.title}</a></p>
-                            <#else>
-                            <p class="text">下一篇：没有了</p>
-                            </#if>
                         </div> -->
+                        <div class="hr"></div>
                     </div>
                     <div class="l_bottom"></div>
                 </div>
                 <div class="r_box">
                     <div class="trends">
-                        热门新闻
+                        热门推荐
                     </div>
                     {ms:arclist size=10 flag='hot' orderby='sort'}
                         <#if field.flag?contains('tv')>
@@ -107,15 +82,20 @@
 </body>
 <script src="{ms:global.host/}/{ms:global.style/}/js/jquery.js"></script>
 <script src="{ms:global.host/}/{ms:global.style/}/js/swiper-3.4.2.min.js"></script>
-<script src="{ms:global.host/}/{ms:global.style/}/js/pagination.js"></script>
-<script src="{ms:global.host/}/{ms:global.style/}/utils/head.js"></script>
+<script type="text/javascript" src="${base}/static/plugins/vue/2.6.9/vue.js"></script>
+<script type="text/javascript" src="${base}/static/plugins/vue-router/3.5.1/vue-router.js"></script>
 <script src="{ms:global.host/}/{ms:global.style/}/js/app.js"></script>
+
+<script src="${base}/static/plugins/axios/0.18.0/axios.min.js"></script>
+<script src="${base}/static/plugins/qs/6.6.0/qs.min.js"></script>
+<script type="text/javascript" src="${base}/static/plugins/moment/2.29.1/moment.js"></script>
+<script type="text/javascript" src="${base}/static/plugins/ms/1.0.0/ms.http.js"></script>
+<script src="{ms:global.host/}/static/plugins/element-ui/2.15.1/index.min.js"></script>
 <script type="text/javascript">
     var app = new Vue({
         el: '#app',
         data: {
-            isArticle: true,
-            typePath: '<#if field.typeid?has_content>${field.typeid}<#if field.parentids?has_content>,${field.parentids}</#if><#else>0</#if>'
+            isArticle: true
         },
         mixins: [mixin],
         methods: {}

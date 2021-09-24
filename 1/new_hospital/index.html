@@ -8,57 +8,91 @@
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/home.css">
+    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/aside.css">
+    <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css">
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
 </head>
+<style>
+    .el-dialog__header{
+        text-align: center;
+        line-height: 48px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 0;
+    }
+    .el-dialog__body{
+        padding: 0;
+    }
+    .modalContent{
+        padding: 20px;
+    }
+    .modalContent .desc{
+        font-size: 14px;
+        color: #626775;
+    }
+    .form_item{
+        margin-top: 10px;
+    }
+    .el-dialog__footer{
+        text-align: center;
+    }
+    .submitBtn{
+        background: rgb(179, 30, 35);
+        border: none;
+        width: 400px;
+        height: 40px;
+        border-radius: 3px;
+    }
+    .submitBtn:hover{
+        background: rgb(179, 30, 35);
+        border-color: transparent!important;
+        color: #fff!important;
+    }
+    .banner .swiper-container .swiper-slide{
+        position: relative;
+    }
+    .bannerDescBox{
+        width: 100%;
+        position: absolute;
+        top: 102px;
+        z-index: 999;
+    }
+    .bannerDesc{
+        width: 1200px;
+        margin: auto;
+        z-index: 999;
+        text-align: left;
+        color: #fff;
+    }
+    .bannerDesc .title{
+        font-size: 44px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    .bannerDesc .title .desc{
+        font-size: 20px;
+    }
+    .bannerDesc .btn{
+        width: 160px;
+        height: 45px;
+        line-height: 45px;
+        border: 1px solid #fff;
+        margin-top: 40px;
+        border-radius: 3px;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .bannerDesc .btn:hover{
+        background: #4f98ff;
+        color: #ffffff;
+        border: 1px solid #4f98ff;
+    }
+</style>
 <body>
     <div class="wrapper" v-cloak id="app">
-        <div class="header">
-            <div class="nav">
-                <div class="left">
-                    <div class="logo">
-                        <img src="{ms:global.host/}/{ms:global.style/}/images/logo.png" alt="">
-                    </div>
-                </div>
-                <div class="cen">
-                    <ul class="menu">
-                        <li class="lis">
-                            <span class="active">首页</span>
-                        </li>
-                        {ms:channel type='top' flag='nav' orderby='sort'}
-                        <#assign parentlink=field.typelink>
-                        <#assign parentchannel=field>
-                        <li class="lis">
-                            <span @click="gotoHref('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')">${field.typetitle}</span>
-                            <#if (field.childsize>0)>
-                                <div class="twoNav">
-                                    <i class="arrow"></i>
-                                    {ms:channel type='son' flag='nav2' orderby='sort'}
-                                    <p class="navText">
-                                        <a href="<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>">
-                                            ${field.typetitle}</p>
-                                        </a>
-                                    {/ms:channel}
-                                    <!-- <p class="navText">人力资源管理系统</p>
-                                    <p class="navText">电子票据管理平台</p>
-                                    <p class="navText">智能报销管理系统</p>
-                                    <p class="navText">合同管理系统</p> -->
-                                </div>
-                            </#if>
-                        </li>
-                        {/ms:channel}
-                    </ul>
-                </div>
-                <div class="right">
-                    <div class="icon">
-                        <img src="{ms:global.host/}/{ms:global.style/}/images/Hotline.png" alt="">
-                    </div>
-                    <div class="textBox">
-                        <p class="phone">010-87897479</p>
-                    </div>
-                    <div class="btn">申请试用</div>
-                </div>
-            </div>
-        </div>
+        <#include "head.html" />
         <div class="center">
             <div class="banner">
                 {ms:channel type='self' typeid='1418535046827040770' }
@@ -69,6 +103,21 @@
                             <a href="#">
                                 <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
                             </a>
+                            <#if (field.content)>
+                            <div class="bannerDescBox">
+                                <div class="bannerDesc">
+                                    <p class="title">
+                                        ${field.title}
+                                    </p>
+                                    <div class="desc">
+                                        ${field.content}
+                                    </div>
+                                    <p class="btn" @click="handleOpen">
+                                        申请试用
+                                    </p>
+                                </div>
+                            </div>
+                            </#if>
                         </div>
                         {/ms:arclist}
                     </div>
@@ -517,6 +566,30 @@
             </div>
         </div>
         <#include "foot.html" />
+        <#include "right.html" />
+        <el-dialog
+            title="试用申请咨询"
+            :visible.sync="dialogVisible"
+            width="440px"
+            :before-close="handleClose">
+            <div class="modalContent">
+                <div class="desc">完善以下信息您可以免费体验我们的产品功能，我们的顾问会在 1个工作日内与您取得联系</div>
+                <el-form ref="form" :rules="rules" :model="modalForm" label-width="80px">
+                    <el-form-item required class="form_item" size="mini" label="单位名称" prop="unitName">
+                        <el-input v-model="modalForm.unitName"></el-input>
+                    </el-form-item>
+                    <el-form-item required class="form_item" size="mini" label="姓名" prop="name">
+                        <el-input v-model="modalForm.name"></el-input>
+                    </el-form-item>
+                    <el-form-item required class="form_item" size="mini" label="手机号" prop="phone">
+                        <el-input v-model="modalForm.phone"></el-input>
+                    </el-form-item>
+                </el-form>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button class="submitBtn" type="primary" @click="dialogVisible = false">提交申请</el-button>
+            </span>
+        </el-dialog>
     </div>
 </body>
 <script src="{ms:global.host/}/{ms:global.style/}/js/jquery.js"></script>
