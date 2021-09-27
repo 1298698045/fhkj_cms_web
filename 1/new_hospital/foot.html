@@ -6,55 +6,42 @@
                     <p class="title">
                         快速入口
                     </p>
-                    <p class="text">
+                    <p class="text" @click="gotoHref('{ms:global.url/}/index.html')">
                         首页
                     </p>
-                    <p class="text">
+                    <p class="text" @click="handleOpen">
                         申请试用
                     </p>
-                    <p class="text">
+                    {ms:channel type='self' typeid='1400716168132456449'}
+                    <p class="text" @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')">
                         新闻中心
                     </p>
-                    <p class="text">
+                    {/ms:channel}
+                    {ms:channel type='self' typeid='1438711778957242369'}
+                    <p class="text" @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')">
                         客户案例
                     </p>
+                    {/ms:channel}
                 </div>
                 <div class="column">
                     <p class="title">
                         产品中心
                     </p>
-                    <p class="text">
-                        协同办公系统（OA）
+                    {ms:channel type='son' typeid='1438711587575345153'}
+                    <p class="text" @click="goto('{ms:global.url/}${field.typelink}')">
+                        ${field.typetitle}
                     </p>
-                    <p class="text">
-                        人力资源管理系统
-                    </p>
-                    <p class="text">
-                        电子票据管理平台
-                    </p>
-                    <p class="text">
-                        智能报销管理系统
-                    </p>
-                    <p class="text">
-                        合同管理系统
-                    </p>
+                    {/ms:channel}
                 </div>
                 <div class="column">
                     <p class="title">
                         关于我们
                     </p>
-                    <p class="text">
-                        公司介绍
+                    {ms:channel type='son' typeid='1438712142158802946'}
+                    <p class="text" @click="goto('{ms:global.url/}${field.typelink}')">
+                        ${field.typetitle}
                     </p>
-                    <p class="text">
-                        技术资质
-                    </p>
-                    <p class="text">
-                        联系我们
-                    </p>
-                    <p class="text">
-                        人才招聘
-                    </p>
+                    {/ms:channel}
                 </div>
             </div>
             <div class="rBox">

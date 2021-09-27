@@ -9,45 +9,11 @@
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/home.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/aside.css">
+    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/static/iconfont/iconfont.css">
     <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css">
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
 </head>
 <style>
-    .el-dialog__header{
-        text-align: center;
-        line-height: 48px;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 0;
-    }
-    .el-dialog__body{
-        padding: 0;
-    }
-    .modalContent{
-        padding: 20px;
-    }
-    .modalContent .desc{
-        font-size: 14px;
-        color: #626775;
-    }
-    .form_item{
-        margin-top: 10px;
-    }
-    .el-dialog__footer{
-        text-align: center;
-    }
-    .submitBtn{
-        background: rgb(179, 30, 35);
-        border: none;
-        width: 400px;
-        height: 40px;
-        border-radius: 3px;
-    }
-    .submitBtn:hover{
-        background: rgb(179, 30, 35);
-        border-color: transparent!important;
-        color: #fff!important;
-    }
     .banner .swiper-container .swiper-slide{
         position: relative;
     }
@@ -89,6 +55,10 @@
         color: #ffffff;
         border: 1px solid #4f98ff;
     }
+    .fake_item{
+        flex: 0 0 206px;
+        height: 0;
+    }
 </style>
 <body>
     <div class="wrapper" v-cloak id="app">
@@ -129,17 +99,17 @@
             <div class="home_content">
                 <div class="tab_wrap">
                     <div class="tabs">
-                        {ms:channel type='son' typeid='1400716168132456449' }
+                        {ms:channel type='son' orderby='sort' typeid='1400716168132456449' }
                         <p class="tab<#if field.index==1> active</#if>">
                             ${field.typetitle}
                         </p>
                         {/ms:channel}
                     </div>
-                    {ms:channel type='son' typeid='1400716168132456449'}
+                    {ms:channel type='son' orderby='sort' typeid='1400716168132456449'}
                     <div class="uls_wrap<#if field.index==1> active</#if>">
                         <ul class="uls">
                             {ms:arclist size=4 flag='c' orderby='sort'}
-                            <a href="/Detail" style="width: 50%;">
+                            <a href="{ms:global.url/}${field.link}" target="_blank" style="width: 50%;">
                                 <li>
                                     <span class="dian">
                                     </span>
@@ -151,13 +121,15 @@
                     </div>
                     {/ms:channel}
                 </div>
-                <a href="/Xinwen" style="display: flex; color: rgb(79, 152, 255); margin-top: 40px; justify-content: center;">
+                {ms:channel type='self' typeid='1400716168132456449'}
+                <a href="#"  @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')" target="_blank" style="display: flex; color: rgb(79, 152, 255); margin-top: 40px; justify-content: center;">
                     <p>
                         更多新闻动态
                     </p>
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3MDhjNzI2YS1mYjdkLTQxOTItYmM2ZS0yNTAxMzRkZjdiODMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjJGMEU4NzA3NEI0MTFFQjlGODk5RjJGNkNEQzkxQTAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjJGMEU4NkY3NEI0MTFFQjlGODk5RjJGNkNEQzkxQTAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MDhjNzI2YS1mYjdkLTQxOTItYmM2ZS0yNTAxMzRkZjdiODMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NzA4YzcyNmEtZmI3ZC00MTkyLWJjNmUtMjUwMTM0ZGY3Yjgz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"
                     alt="" style="width: 20px; height: 20px; margin-left: 10px;">
                 </a>
+                {/ms:channel}
             </div>
             <div class="myService">
                 <div class="leftCont">
@@ -184,7 +156,7 @@
                             4. 医院用户在内控管理方面及其它个性定制方面的需求。
                         </p>
                     </div>
-                    <div class="apply">
+                    <div class="apply" @click="handleOpen">
                         申请试用
                     </div>
                 </div>
@@ -202,8 +174,9 @@
                     </p>
                     <div class="row_box_wrap">
                         {ms:channel type='self' typeid='1438711587575345153'}
+                        <#assign parentlink=field.typelink>
                         {ms:arclist flag='c'}
-                        <div class="child_box">
+                        <div class="child_box" @click="goto('{ms:global.url/}<#if field.type==3>${parentlink}<#else>${field.typepath}/index.html</#if>')">
                             <div class="radius">
                                 <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
                             </div>
@@ -367,171 +340,30 @@
                     <div class="title min">
                         凤凰办公的产品，全方位为您提供服务
                     </div>
+                    {ms:channel type="self" typeid='1438711778957242369'}
                     <div class="caseBanner">
                         <div class="swiper-container-case">
                             <div class="swiper-wrapper">
+                                {ms:arclist}
                                 <div class="swiper-slide">
                                     <div class="box">
                                         <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
+                                            <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
                                         </p>
                                         <div class="caseCont">
                                             <div class="imgs">
                                                 <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
                                             </div>
                                             <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
+                                                ${field.keyword}
                                             </div>
                                             <div class="title">
-                                                标题
+                                                ${field.title}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="box">
-                                        <p class="img">
-                                            <img src="{ms:global.host/}/{ms:global.style/}/images/ERC_10.png" alt="">
-                                        </p>
-                                        <div class="caseCont">
-                                            <div class="imgs">
-                                                <img src="/images/104.png" alt="">
-                                            </div>
-                                            <div class="textRow">
-                                                医药医疗：山西省长治市人民医院
-                                            </div>
-                                            <div class="title">
-                                                标题
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/ms:arclist}
                             </div>
                             <div class="swiper-pagination1"></div>
                             <!-- Add Arrows -->
@@ -541,6 +373,7 @@
                             </div>
                         </div>
                     </div>
+                    {/ms:channel}
                     <div class="advertPlate">
                         {ms:channel type="self" typeid='1438711778957242369'}
                         {ms:arclist}
@@ -551,10 +384,14 @@
                             </p>
                         </div>
                         {/ms:arclist}
+                        <div class="fake_item"></div>
+                        <div class="fake_item"></div>
+                        <div class="fake_item"></div>
                         {/ms:channel}
                     </div>
+                    {ms:channel type="self" typeid='1438711778957242369'}
                     <div class="more">
-                        <a href="/CustomerCase" style="display: flex; color: rgb(79, 152, 255); justify-content: center;">
+                        <a href="#" @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')" target="_blank" style="display: flex; color: rgb(79, 152, 255); justify-content: center;">
                             <p>
                                 更多客户案例
                             </p>
@@ -562,12 +399,14 @@
                             alt="" style="width: 20px; height: 20px; margin-left: 10px;">
                         </a>
                     </div>
+                    {/ms:channel}
                 </div>
             </div>
         </div>
         <#include "foot.html" />
         <#include "right.html" />
-        <el-dialog
+        <Modal ref="childModal" />
+        <!-- <el-dialog
             title="试用申请咨询"
             :visible.sync="dialogVisible"
             width="440px"
@@ -589,7 +428,7 @@
             <span slot="footer" class="dialog-footer">
                 <el-button class="submitBtn" type="primary" @click="dialogVisible = false">提交申请</el-button>
             </span>
-        </el-dialog>
+        </el-dialog> -->
     </div>
 </body>
 <script src="{ms:global.host/}/{ms:global.style/}/js/jquery.js"></script>
@@ -607,8 +446,12 @@
     const vum = new Vue({
         el:'#app',
         mixins: [mixin],
+        components:{
+            Modal
+        },
         data(){
             return {
+                typePath: '<#if field.typeid?has_content>${field.typeid}<#if field.parentids?has_content>,${field.parentids}</#if><#else>0</#if>',
                 activeTab:0,
                 tabs:[
                     {

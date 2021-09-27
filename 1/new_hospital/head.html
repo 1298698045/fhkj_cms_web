@@ -8,14 +8,18 @@
         <div class="cen">
             <ul class="menu">
                 <li class="lis">
-                    <span class="active">首页</span>
+                    <span :class="{active: activeMenu=='0'}" @click="gotoHref('{ms:global.url/}/index.html')">首页</span>
                 </li>
                 {ms:channel type='top' flag='nav' orderby='sort'}
                 <#assign parentlink=field.typelink>
                 <#assign parentchannel=field>
                 <li class="lis">
-                    <span @click="gotoHref('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')">${field.typetitle}</span>
-                    <#if (field.childsize>0)>
+                    <span
+                    :class="{active: activeMenu.includes('${field.typeid}')}"
+                    @mouseover="onMenuMouseOver('${field.typeid}')"
+                    @mouseleave="onMenuMouseLeave"
+                    @click="gotoHref('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')">${field.typetitle}</span>
+                    <#if (field.childsize>0&&field.typeid!='1400716168132456449')>
                         <div class="twoNav">
                             <i class="arrow"></i>
                             {ms:channel type='son' flag='nav2' orderby='sort'}

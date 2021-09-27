@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/aside.css">
+    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/static/iconfont/iconfont.css">
     <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css">
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
     <style>
@@ -98,7 +99,8 @@
         }
         .imgs_wrap  .img_box{
             width: 384px;
-            height: 252px;
+            height: auto;
+            /* height: 252px; */
             border: 1px solid #eeeeee;
             margin-bottom: 90px;
         }
@@ -140,8 +142,17 @@
                             </div>
                         </div>
                     </div>
+                    {ms:channel type="self"}
                     <div class="imgs_wrap">
+                        {ms:arclist orderby='sort'}
                         <div class="img_box">
+                            <img class="img" src='{ms:global.host/}{@ms:file field.litpic/}' alt=""/>
+                        </div>
+                        {/ms:arclist}
+                        <div class="img_box_h" style="border: none;">
+
+                        </div> 
+                        <!-- <div class="img_box">
                             <img class="img" src='{ms:global.host/}/{ms:global.style/}/images/ERC_1.png' alt=""/>
                         </div>
                         <div class="img_box">
@@ -185,13 +196,15 @@
                         </div>
                         <div class="img_box_h" style="border: none;">
 
-                        </div>
+                        </div> -->
                     </div>
+                    {/ms:channel}
                 </div>
             </div>
         </div>
         <#include "foot.html" />
         <#include "right.html" />
+        <Modal ref="childModal" />
     </div>
 </body>
 <script src="{ms:global.host/}/{ms:global.style/}/js/jquery.js"></script>
@@ -209,8 +222,12 @@
     const vum = new Vue({
         el: '#app',
         mixins: [mixin],
+        components:{
+            Modal
+        },
         data() {
             return {
+                typePath: '<#if field.typeid?has_content>${field.typeid}<#if field.parentids?has_content>,${field.parentids}</#if><#else>0</#if>',
                 page: {
                     //当前页数
                     pageNo: 1,
@@ -224,9 +241,6 @@
             }
         },
         methods: {
-            handleOpen() {
-
-            },
             changePage(e) {
 
             }

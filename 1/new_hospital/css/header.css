@@ -41,6 +41,9 @@
     position: relative;
     margin-right: 60px;
 }
+.header .cen .menu .lis span.active{
+    font-weight: bold;
+}
 .header .cen .menu .lis .twoNav{
     width: 185px;
     position: absolute;
@@ -66,17 +69,17 @@
     content: '';
     position: absolute;
     /* width: 8px; */
-    top: -7px;
+    top: -14px;
     /* background: url('/images/arrrow.png') no-repeat center; */
     height: 35px;
     /* transform: rotate(
     270deg); */
-    left: 25px;
+    left: 7px;
     /* width:0; */
     height: 0;
-    border-right:8px solid transparent;
-    border-left:8px solid transparent;
-    border-bottom:8px solid #fff;
+    border-right:16px solid transparent;
+    border-left:16px solid transparent;
+    border-bottom:16px solid #fff;
 }
 .header .cen .menu .lis .twoNav .navText{
     padding: 5px 12px;
@@ -290,4 +293,42 @@
 
 .Breadcrumb{
     padding: 20px 0;
+}
+
+
+/* 弹框 */
+.el-dialog__header{
+    text-align: center!important;
+    line-height: 48px!important;
+    font-size: 16px!important;
+    font-weight: bold!important;
+    padding: 0!important;
+}
+.el-dialog__body{
+    padding: 0!important;
+}
+.modalContent{
+    padding: 20px!important;
+}
+.modalContent .desc{
+    font-size: 14px!important;
+    color: #626775!important;
+}
+.form_item{
+    margin-top: 10px!important;
+}
+.el-dialog__footer{
+    text-align: center!important;
+}
+.submitBtn{
+    background: rgb(179, 30, 35)!important;
+    border: none!important;
+    width: 400px!important;
+    height: 40px!important;
+    border-radius: 3px!important;
+}
+.submitBtn:hover{
+    background: rgb(179, 30, 35)!important;
+    border-color: transparent!important;
+    color: #fff!important;
 }

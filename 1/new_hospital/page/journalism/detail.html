@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/aside.css">
+    <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/static/iconfont/iconfont.css">
     <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css">
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/journalismDetail.css">
@@ -78,6 +79,7 @@
             </div>
         </div>
         <#include "foot.html" />
+        <Modal ref="childModal" />
     </div>
 </body>
 <script src="{ms:global.host/}/{ms:global.style/}/js/jquery.js"></script>
@@ -95,7 +97,11 @@
     var app = new Vue({
         el: '#app',
         data: {
+            typePath: '<#if field.typeid?has_content>${field.typeid}<#if field.parentids?has_content>,${field.parentids}</#if><#else>0</#if>',
             isArticle: true
+        },
+        components:{
+            Modal
         },
         mixins: [mixin],
         methods: {}
