@@ -19,7 +19,16 @@
         <#include "head.html" />
         <#include "right.html" />
         <div class="center">
-            <#include "location.html" />
+            <!-- <#include "location.html" /> -->
+            <div class="Breadcrumb">
+                <span>您现在的位置:  </span>
+                <span class="black" @click="goto('{ms:global.url/}/home.html')">首页</span>
+                {ms:channel type='self' typeid='1400716168132456449'}
+                <span class="black" @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')"> &gt;新闻中心</span>
+                {/ms:channel}
+                <span> &gt; 详情</span>
+            </div>
+            
             <div class="container">
                 <div class="l_box">
                     <div class="l_top"></div>
