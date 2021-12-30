@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=1300px">
     <title>北京凤凰世纪科技</title>
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
@@ -165,44 +165,57 @@
             color: #fff !important;
         }
 
-        .bannerDescBox{
-        width: 100%;
-        position: absolute;
-        top: 102px;
-        z-index: 999;
-    }
-    .bannerDesc{
-        width: 1200px;
-        margin: auto;
-        z-index: 999;
-        text-align: left;
-        color: #fff;
-    }
-    .bannerDesc .title{
-        font-size: 44px;
-        font-weight: bold;
-        color: #ffffff;
-    }
-    .bannerDesc .title .desc{
-        font-size: 20px;
-    }
-    .bannerDesc .btn{
-        width: 160px;
-        height: 45px;
-        line-height: 45px;
-        border: 1px solid #fff;
-        margin-top: 40px;
-        border-radius: 3px;
-        font-size: 18px;
-        text-align: center;
-        font-weight: bold;
-        cursor: pointer;
-    }
-    .bannerDesc .btn:hover{
-        background: #4f98ff;
-        color: #ffffff;
-        border: 1px solid #4f98ff;
-    }
+        .bannerDescBox {
+            width: 100%;
+            position: absolute;
+            top: 102px;
+            z-index: 999;
+        }
+
+        .bannerDesc {
+            width: 1200px;
+            margin: auto;
+            z-index: 999;
+            text-align: left;
+            color: #fff;
+        }
+
+        .bannerDesc .title {
+            font-size: 44px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .bannerDesc .title .desc {
+            font-size: 20px;
+        }
+
+        .bannerDesc .btn {
+            width: 160px;
+            height: 45px;
+            line-height: 45px;
+            border: 1px solid #fff;
+            margin-top: 40px;
+            border-radius: 3px;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .bannerDesc .btn:hover {
+            background: #4f98ff;
+            color: #ffffff;
+            border: 1px solid #4f98ff;
+        }
+
+        .bannerDesc .desc p span {
+            color: #fff !important;
+        }
+
+        .center .banner {
+            height: 375px !important;
+        }
     </style>
 </head>
 
@@ -214,25 +227,25 @@
                 {ms:channel type='self' typeid='1418535046827040770' }
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        {ms:arclist}
-                        <div class="swiper-slide">
+                        {ms:arclist orderby='sort'}
+                        <div class="swiper-slide" @click="goto('${field.descrip}')" desc="${field.descrip}">
                             <a href="#">
                                 <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
                             </a>
                             <#if (field.content)>
-                            <div class="bannerDescBox">
-                                <div class="bannerDesc">
-                                    <p class="title">
-                                        ${field.title}
-                                    </p>
-                                    <div class="desc">
-                                        ${field.content}
+                                <div class="bannerDescBox">
+                                    <div class="bannerDesc">
+                                        <p class="title">
+                                            ${field.title}
+                                        </p>
+                                        <div class="desc">
+                                            ${field.content}
+                                        </div>
+                                        <p class="btn" @click.stop="handleOpen">
+                                            申请试用
+                                        </p>
                                     </div>
-                                    <p class="btn" @click="handleOpen">
-                                        申请试用
-                                    </p>
                                 </div>
-                            </div>
                             </#if>
                         </div>
                         {/ms:arclist}
@@ -249,18 +262,19 @@
                         <div class="box_wrap">
                             {ms:channel type='self'}
                             <#assign parentlink=field.typelink>
-                            {ms:arclist}
-                            <div class="box" @click="goto('{ms:global.url/}<#if field.type==3>${parentlink}<#else>${field.typepath}/index.html</#if>')">
-                                <div class="imgs">
-                                    <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="" />
+                                {ms:arclist orderby='sort'}
+                                <div class="box"
+                                    @click="goto('{ms:global.url/}<#if field.type==3>${parentlink}<#else>${field.typepath}/index.html</#if>')">
+                                    <div class="imgs">
+                                        <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="" />
+                                    </div>
+                                    <div class="name">${field.title}</div>
+                                    <div class="cont_text">
+                                        ${field.descrip}
+                                    </div>
                                 </div>
-                                <div class="name">${field.title}</div>
-                                <div class="cont_text">
-                                    ${field.descrip}
-                                </div>
-                            </div>
-                            {/ms:arclist}
-                            {/ms:channel}
+                                {/ms:arclist}
+                                {/ms:channel}
                         </div>
                     </div>
                 </div>
@@ -286,7 +300,7 @@
     const vum = new Vue({
         el: "#app",
         mixins: [mixin],
-        components:{
+        components: {
             Modal
         },
         data() {

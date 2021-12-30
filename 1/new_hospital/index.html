@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1440">
+    <meta name="viewport" content="width=1300px">
     <title>北京凤凰世纪科技</title>
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
@@ -14,31 +15,36 @@
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
 </head>
 <style>
-    .banner .swiper-container .swiper-slide{
+    .banner .swiper-container .swiper-slide {
         position: relative;
     }
-    .bannerDescBox{
+
+    .bannerDescBox {
         width: 100%;
         position: absolute;
         top: 102px;
         z-index: 999;
     }
-    .bannerDesc{
+
+    .bannerDesc {
         width: 1200px;
         margin: auto;
         z-index: 999;
         text-align: left;
         color: #fff;
     }
-    .bannerDesc .title{
+
+    .bannerDesc .title {
         font-size: 44px;
         font-weight: bold;
         color: #ffffff;
     }
-    .bannerDesc .title .desc{
+
+    .bannerDesc .title .desc {
         font-size: 20px;
     }
-    .bannerDesc .btn{
+
+    .bannerDesc .btn {
         width: 160px;
         height: 45px;
         line-height: 45px;
@@ -50,16 +56,30 @@
         font-weight: bold;
         cursor: pointer;
     }
-    .bannerDesc .btn:hover{
+
+    .bannerDesc .btn:hover {
         background: #4f98ff;
         color: #ffffff;
         border: 1px solid #4f98ff;
     }
-    .fake_item{
+
+    .bannerDesc .desc p span {
+        color: #fff !important;
+    }
+
+    .fake_item {
         flex: 0 0 206px;
         height: 0;
     }
+
+    .uls li .title {
+        width: 560px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 </style>
+
 <body>
     <div class="wrapper" v-cloak id="app">
         <#include "head.html" />
@@ -68,25 +88,25 @@
                 {ms:channel type='self' typeid='1418535046827040770' }
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        {ms:arclist}
-                        <div class="swiper-slide">
-                            <a href="#">
-                                <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
-                            </a>
+                        {ms:arclist orderby='sort'}
+                        <div class="swiper-slide"
+                            style="background: url('{ms:global.host/}{@ms:file field.litpic/}') no-repeat;background-size: cover;"
+                            @click="goto('${field.descrip}')" desc="${field.descrip}">
+
                             <#if (field.content)>
-                            <div class="bannerDescBox">
-                                <div class="bannerDesc">
-                                    <p class="title">
-                                        ${field.title}
-                                    </p>
-                                    <div class="desc">
-                                        ${field.content}
+                                <div class="bannerDescBox">
+                                    <div class="bannerDesc">
+                                        <p class="title">
+                                            ${field.title}
+                                        </p>
+                                        <div class="desc">
+                                            ${field.content}
+                                        </div>
+                                        <p class="btn" @click.stop="handleOpen">
+                                            申请试用
+                                        </p>
                                     </div>
-                                    <p class="btn" @click="handleOpen">
-                                        申请试用
-                                    </p>
                                 </div>
-                            </div>
                             </#if>
                         </div>
                         {/ms:arclist}
@@ -108,26 +128,43 @@
                     {ms:channel type='son' orderby='sort' typeid='1400716168132456449'}
                     <div class="uls_wrap<#if field.index==1> active</#if>">
                         <ul class="uls">
-                            {ms:arclist size=4 flag='c' orderby='sort'}
+                            {ms:arclist size=10 flag='c' orderby='sort'}
+                            <#if field.flag?contains('tv')>
+                            <a href="${field.descrip}" target="_blank" style="width: 50%;">
+                                <li>
+                                    <span class="dian">
+                                    </span>
+                                    <span class="title">
+                                        ${field.title}
+                                    </span>
+                                </li>
+                            </a>
+                            <#else>
                             <a href="{ms:global.url/}${field.link}" target="_blank" style="width: 50%;">
                                 <li>
                                     <span class="dian">
                                     </span>
-                                    ${field.title}
+                                    <span class="title">
+                                        ${field.title}
+                                    </span>
                                 </li>
                             </a>
+                            </#if>
                             {/ms:arclist}
                         </ul>
                     </div>
                     {/ms:channel}
                 </div>
                 {ms:channel type='self' typeid='1400716168132456449'}
-                <a href="#"  @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')" target="_blank" style="display: flex; color: rgb(79, 152, 255); margin-top: 40px; justify-content: center;">
+                <a href="#"
+                    @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')"
+                    target="_blank"
+                    style="display: flex; color: rgb(79, 152, 255); margin-top: 40px; justify-content: center;">
                     <p>
-                        更多新闻动态
+                        更多查看
                     </p>
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3MDhjNzI2YS1mYjdkLTQxOTItYmM2ZS0yNTAxMzRkZjdiODMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjJGMEU4NzA3NEI0MTFFQjlGODk5RjJGNkNEQzkxQTAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjJGMEU4NkY3NEI0MTFFQjlGODk5RjJGNkNEQzkxQTAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MDhjNzI2YS1mYjdkLTQxOTItYmM2ZS0yNTAxMzRkZjdiODMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NzA4YzcyNmEtZmI3ZC00MTkyLWJjNmUtMjUwMTM0ZGY3Yjgz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"
-                    alt="" style="width: 20px; height: 20px; margin-left: 10px;">
+                        alt="" style="width: 20px; height: 20px; margin-left: 10px;">
                 </a>
                 {/ms:channel}
             </div>
@@ -175,23 +212,24 @@
                     <div class="row_box_wrap">
                         {ms:channel type='self' typeid='1438711587575345153'}
                         <#assign parentlink=field.typelink>
-                        {ms:arclist flag='c'}
-                        <div class="child_box" @click="goto('{ms:global.url/}<#if field.type==3>${parentlink}<#else>${field.typepath}/index.html</#if>')">
-                            <div class="radius">
-                                <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
+                            {ms:arclist flag='c' orderby='sort'}
+                            <div class="child_box"
+                                @click="goto('{ms:global.url/}<#if field.type==3>${parentlink}<#else>${field.typepath}/index.html</#if>')">
+                                <div class="radius">
+                                    <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
+                                </div>
+                                <div class="right_cont">
+                                    <p class="title">
+                                        ${field.title}
+                                    </p>
+                                    <p class="text">
+                                        ${field.descrip}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="right_cont">
-                                <p class="title">
-                                    ${field.title}
-                                </p>
-                                <p class="text">
-                                    ${field.descrip}
-                                </p>
-                            </div>
-                        </div>
-                        {/ms:arclist}
-                        {/ms:channel}
-                        <!-- <div class="child_box">
+                            {/ms:arclist}
+                            {/ms:channel}
+                            <!-- <div class="child_box">
                             <div class="radius">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTVGOERCMzU2RUIyMTFFQjhGNTNGNzcxNTIyQjUxNDEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTVGOERCMzQ2RUIyMTFFQjhGNTNGNzcxNTIyQjUxNDEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowM0JENkUyNjZFQjAxMUVCOEY1M0Y3NzE1MjJCNTE0MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowM0JENkUyNzZFQjAxMUVCOEY1M0Y3NzE1MjJCNTE0MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvkXyv8AAB1pSURBVHja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"
                                 alt="">
@@ -345,15 +383,17 @@
                         <div class="swiper-container-case">
                             <div class="swiper-wrapper">
                                 {ms:arclist}
-                                <div class="swiper-slide">
+                                <div class="swiper-slide" @click="goto('{ms:global.url/}${field.link}')">
                                     <div class="box">
                                         <p class="img">
-                                            <img src="{ms:global.host/}{@ms:file field.litpic/}" alt="">
+                                            <img :src="'{ms:global.host/}{@ms:file field.litpic/}'" alt="">
                                         </p>
                                         <div class="caseCont">
+                                            <!-- <#if (field.descrip)>
                                             <div class="imgs">
-                                                <img src="{ms:global.host/}/{ms:global.style/}/images/104.png" alt="">
+                                                <img src="{ms:global.host/}/${field.descrip}" alt="">
                                             </div>
+                                            </#if> -->
                                             <div class="textRow">
                                                 ${field.keyword}
                                             </div>
@@ -374,29 +414,32 @@
                         </div>
                     </div>
                     {/ms:channel}
-                    <div class="advertPlate">
+                    <!-- <div class="advertPlate">
                         {ms:channel type="self" typeid='1438711778957242369'}
                         {ms:arclist}
+                        <#if (field.descrip)>
                         <div class="plate">
                             <p>
-                                <img src="{ms:global.host/}{@ms:file field.litpic/}"
-                                alt="">
+                                <img src="{ms:global.host/}${field.descrip}" alt="">
                             </p>
                         </div>
+                        </#if>
                         {/ms:arclist}
                         <div class="fake_item"></div>
                         <div class="fake_item"></div>
                         <div class="fake_item"></div>
                         {/ms:channel}
-                    </div>
+                    </div> -->
                     {ms:channel type="self" typeid='1438711778957242369'}
                     <div class="more">
-                        <a href="#" @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')" target="_blank" style="display: flex; color: rgb(79, 152, 255); justify-content: center;">
+                        <a href="#"
+                            @click="goto('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')"
+                            target="_blank" style="display: flex; color: rgb(79, 152, 255); justify-content: center;">
                             <p>
-                                更多客户案例
+                                更多查看
                             </p>
-                            <img src="{ms:global.host/}/{ms:global.style/}/images/1_more.png"
-                            alt="" style="width: 20px; height: 20px; margin-left: 10px;">
+                            <img src="{ms:global.host/}/{ms:global.style/}/images/1_more.png" alt=""
+                                style="width: 20px; height: 20px; margin-left: 10px;">
                         </a>
                     </div>
                     {/ms:channel}
@@ -444,27 +487,27 @@
 <script src="{ms:global.host/}/static/plugins/element-ui/2.15.1/index.min.js"></script>
 <script>
     const vum = new Vue({
-        el:'#app',
+        el: '#app',
         mixins: [mixin],
-        components:{
+        components: {
             Modal
         },
-        data(){
+        data() {
             return {
                 typePath: '<#if field.typeid?has_content>${field.typeid}<#if field.parentids?has_content>,${field.parentids}</#if><#else>0</#if>',
-                activeTab:0,
-                tabs:[
+                activeTab: 0,
+                tabs: [
                     {
-                        name:"签约新闻"
+                        name: "签约新闻"
                     },
                     {
-                        name:"验收新闻"
+                        name: "验收新闻"
                     },
                     {
-                        name:"媒体报道"
+                        name: "媒体报道"
                     },
                     {
-                        name:"成功案例"
+                        name: "成功案例"
                     }
                 ],
                 page: {
@@ -480,7 +523,7 @@
                 lines: []
             }
         },
-        created(){
+        created() {
             this.list();
         },
         methods: {
@@ -498,57 +541,61 @@
                                 row.imageUrl = '{ms:global.host/}' + img[0].path
                             }
                         }
-                        if(row.contentType=='tv'){
+                        if (row.contentType == 'tv') {
                             row.link = that.getSimpleText(row.contentDetails);
                         }
                         return row
                     })
-                    if(pageCur){
-                        $("html, body").scrollTop(0).animate({scrollTop: $("#anchor1").offset().top});
+                    if (pageCur) {
+                        $("html, body").scrollTop(0).animate({ scrollTop: $("#anchor1").offset().top });
                     }
                     console.log('lines:', that.lines)
                 }).catch(function (err) {
                     console.error('error:', err)
                 })
             },
-            handleMouseover(e,item,index){
+            handleMouseover(e, item, index) {
                 this.activeTab = index;
             }
         },
     })
-    var mySwiper = new Swiper ('.swiper-container', {
+    var mySwiper = new Swiper('.swiper-container', {
         autoplay: 3000,
         mousewheel: {
             releaseOnEdges: true,//PC端释放滑动
-        }, 
-        paginationClickable:true,
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-    })  
-    $('.swiper-container').hover(function(){
+        },
+        paginationClickable: true,
+        pagination: '.swiper-pagination'
+    })
+    $('.swiper-container').hover(function () {
         mySwiper.stopAutoplay();
-    },function(){
+    }, function () {
         mySwiper.startAutoplay();
     })
-    $('.tabs .tab').hover(function(){
+    $('.tabs .tab').hover(function () {
         $('.tabs .tab').removeClass('active');
         $(this).addClass('active');
         $('.home_content .uls_wrap').hide();
         $('.home_content .uls_wrap').eq($(this).index()).show()
-    },function(){
+    }, function () {
         $(this).addClass('active');
     })
     var swiperCase = new Swiper('.swiper-container-case', {
-        pagination: '.swiper-pagination1',
+        // pagination: '.swiper-pagination1',
         slidesPerView: 3,
-        slidesPerColumn: 1,
-        paginationClickable: true,
+        // paginationClickable: true,
         spaceBetween: 30,
-        observer:true,
-        observeParents:true,
+        // observer: true,
+        // observeParents: true,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
     });
+    // let len = $('.caseBanner .swiper-container-case .swiper-slide').length;
+    // if(len<=3){
+    //     $('.caseBanner .swiper-container-case .swiper-pagination1').hide()
+    // }else {
+    //     $('.caseBanner .swiper-container-case .swiper-pagination1').show()
+    // }
 </script>
+
 </html>

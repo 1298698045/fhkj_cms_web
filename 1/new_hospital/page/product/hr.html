@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1300px">
     <title>北京凤凰世纪科技-人力资源管理系统</title>
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
@@ -14,13 +14,15 @@
     <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css" />
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
     <style>
-        .header.active{
+        .header.active {
             z-index: -1;
         }
+
         .new_banner {
             width: 100%;
-            height: 500px;
+            height: 375px;
             background: url('{ms:global.host/}/{ms:global.style/}/images/1_banner_2_1.jpg') no-repeat;
+            background-size: cover;
         }
 
         .new_banner .bannerText {
@@ -76,13 +78,15 @@
             box-shadow: 0px 1px 0px 0px rgba(228, 228, 228, 1);
             z-index: 9999;
         }
-        .nav_wrap.active{
+
+        .nav_wrap.active {
             width: 100%;
             position: sticky;
             top: 0;
             z-index: 99999;
             background: #fff;
         }
+
         .nav_wrap .nav {
             width: 1200px;
             margin: auto;
@@ -552,7 +556,7 @@
                                 从入职到离退，记录员工成长轨迹；员工信息全面归档，打造高效信息平台；重要事项准时提醒，有效规避劳动风险；人事报表随时取用，实时掌握人员异动。
                             </p>
                             <p class="desclin">360度全景人员资料管理</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                     </div>
                 </div>
@@ -567,7 +571,7 @@
                                 灵活配置管理权限，⽀持复杂组织架构。灵活设置多级部⻔，快速搭建架构体系直观查看组织架构图，⽀持⼀键导出强大的权限定义，多维度精细设置编制直观查看，成本控制⼼中有数。
                             </p>
                             <p class="desclin">灵活配置管理权限，⽀持复杂组织架构</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                         <div class="lImg">
                             <img src='{ms:global.host/}/{ms:global.style/}/images/2.2_img_2.jpg' alt="" />
@@ -589,7 +593,7 @@
                                 从入职到离退，记录员工成长轨迹；员工信息全面归档，打造高效信息平台；重要事项准时提醒，有效规避劳动风险；人事报表随时取用，实时掌握人员异动。
                             </p>
                             <p class="desclin">追踪所有人员变动</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                     </div>
                 </div>
@@ -604,7 +608,7 @@
                                 设置不同考勤⽅案，⽀持多种打卡⽅式；灵活多样的班次设置，考勤管理更清晰；⼀键获取考勤报表，数据精准同步⼯资；考勤异常及时提醒，员工自主管理更高效。
                             </p>
                             <p class="desclin">考勤⽅案⾃定义 灵活打卡更便捷</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                         <div class="lImg">
                             <img src='{ms:global.host/}/{ms:global.style/}/images/2.2_img_4.jpg' alt="" />
@@ -625,7 +629,7 @@
                                 按组、按部门，按周、月排班；灵活统计查询，夜班费用计算等。
                             </p>
                             <p class="desclin">排班支持多种方式</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                     </div>
                 </div>
@@ -640,7 +644,7 @@
                                 保险缴纳调整，导入；月缴纳生成，未缴纳提醒；保险报表。
                             </p>
                             <p class="desclin">保险福利全流程操作</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                         <div class="lImg">
                             <img src='{ms:global.host/}/{ms:global.style/}/images/2.2_img_6.jpg' alt="" />
@@ -661,7 +665,7 @@
                                 针对不同员⼯类别，灵活配置薪酬⽅案
                             </p>
                             <p class="desclin">个性化薪酬⽅案 系统算薪更准确</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                     </div>
                 </div>
@@ -676,7 +680,7 @@
                                 灵活定义指标，考评表，测评维度；批量发布考评，汇总报表，统计。
                             </p>
                             <p class="desclin">360度考评、年度考评，续签试用考评等</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                         <div class="lImg">
                             <img src='{ms:global.host/}/{ms:global.style/}/images/2.2_img_8.jpg' alt="" />
@@ -697,7 +701,7 @@
                                 职位/简历一站式管理，招聘全过程管理
                             </p>
                             <p class="desclin">招聘全流程处理</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                     </div>
                 </div>
@@ -712,7 +716,7 @@
                                 设置不同审批流程，满⾜不同业务场景；审批数据结果⾃动关联各模块；审批结果存档备忘，随时搜索审批详情；移动端审批⼊⼝，随时随地⾼效处理。
                             </p>
                             <p class="desclin">审批模式⾃定义 简明⾼效随时处理</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                         <div class="lImg">
                             <img src='{ms:global.host/}/{ms:global.style/}/images/2.2_img_10.jpg' alt="" />
@@ -733,7 +737,7 @@
                                 与OA、HIS打通、集成微信小程序，实现系统之间互联互通；系统与用户的简单使用。
                             </p>
                             <p class="desclin">协同办公更便捷 满足事业单位一体化管理需求</p>
-                            <p class="apply"  @click="handleOpen">申请试用</p>
+                            <p class="apply" @click="handleOpen">申请试用</p>
                         </div>
                     </div>
                 </div>
@@ -759,7 +763,7 @@
     const vum = new Vue({
         el: '#app',
         mixins: [mixin],
-        components:{
+        components: {
             Modal
         },
         data() {
@@ -812,34 +816,34 @@
                 ],
                 tabIdx: 0,
                 defaultIndexInfo: [
-                    {index:0, top: 800, id:'yg'},
-                    {index:1, top: 800,  id: 'zz'},
-                    {index:2, top: 800,  id: 'sp'},
-                    {index:3, top: 800,  id: 'kq'},
-                    {index:4, top: 800,  id: 'pb'},
-                    {index:5, top: 800,  id: 'bxfl'},
-                    {index:6, top: 800,  id: 'xz'},
-                    {index:7, top: 800,  id: 'kp'},
-                    {index:8, top: 800,  id: 'zp'},
-                    {index:9, top: 800,  id: 'rydp'},
-                    {index:10, top: 800,  id: 'kfhl'}
+                    { index: 0, top: 800, id: 'yg' },
+                    { index: 1, top: 800, id: 'zz' },
+                    { index: 2, top: 800, id: 'sp' },
+                    { index: 3, top: 800, id: 'kq' },
+                    { index: 4, top: 800, id: 'pb' },
+                    { index: 5, top: 800, id: 'bxfl' },
+                    { index: 6, top: 800, id: 'xz' },
+                    { index: 7, top: 800, id: 'kp' },
+                    { index: 8, top: 800, id: 'zp' },
+                    { index: 9, top: 800, id: 'rydp' },
+                    { index: 10, top: 800, id: 'kfhl' }
                 ],
-                isFixed:false
+                isFixed: false
             }
         },
-        watch:{
-            isTop(val,old){
-                if(val){
+        watch: {
+            isTop(val, old) {
+                if (val) {
                     this.tabIdx = 0
                     this.isFixed = false
                 }
             }
         },
-        mounted(){
-            window.addEventListener('mousewheel',this.handleScroll)
+        mounted() {
+            window.addEventListener('mousewheel', this.handleScroll)
         },
         beforeDestroy() {
-            window.removeEventListener('mousewheel',this.handleScroll)
+            window.removeEventListener('mousewheel', this.handleScroll)
         },
         methods: {
             handleMouseover(e, item, index) {
@@ -847,23 +851,23 @@
             },
             handleTab(idx) {
                 this.tabIdx = idx;
-                this.defaultIndexInfo.map(item=>{
-                    let top = document.getElementById(item.id).offsetTop-140;
+                this.defaultIndexInfo.map(item => {
+                    let top = document.getElementById(item.id).offsetTop - 140;
                     console.log(top);
-                    if(item.index==idx){
-                        window.scrollTo({top: top+10})
+                    if (item.index == idx) {
+                        window.scrollTo({ top: top + 10 })
                     }
                 })
             },
-            handleScroll(e){
+            handleScroll(e) {
                 let anchorY = this.$refs.anchor.getBoundingClientRect().top;
-                if(anchorY<=60){
+                if (anchorY <= 60) {
                     this.isFixed = true;
-                }else {
+                } else {
                     this.isFixed = false;
                 }
                 let top = e.clientY;
-                let idx = this.defaultIndexInfo.findIndex((item,index)=>{
+                let idx = this.defaultIndexInfo.findIndex((item, index) => {
                     return top <= this.$refs[item.id].getBoundingClientRect().top;
                 });
                 console.log('idx:', idx)

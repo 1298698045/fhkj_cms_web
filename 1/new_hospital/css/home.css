@@ -1,6 +1,7 @@
 .wrapper .center .banner {
   width: 100%;
-  height: 570px;
+  height: 450px;
+  /* height: 570px; */
 }
 .wrapper .center .banner .swiper-container {
   width: 100%;
@@ -127,10 +128,12 @@
   padding-bottom: 10px;
   font-size: 16px;
   color: #626775;
+  line-height: 24px;
 }
 .myService .leftCont .service_content p {
   color: #626775;
   font-size: 16px;
+  line-height: 24px;
 }
 .myService .leftCont .apply {
   width: 148px;
@@ -239,7 +242,7 @@
   width: 1200px;
   margin: 0 auto;
   height: 560px;
-  background-image: url("/images/icon_bg.png");
+  background-image: url("../images/icon_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -328,8 +331,9 @@
 }
 .caseBanner .swiper-container-case .swiper-slide{
   width: 348px;
-  height: 324px;
+  max-height: 324px;
   border: 1px solid #ccc;
+  cursor: pointer;
 }
 .caseBanner .swiper-container-case .swiper-pagination1{
   text-align: center;
@@ -338,10 +342,18 @@
 .swiper-button-next{
   right: -30px!important;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: url('../images/aright_2.jpg') no-repeat;
+  background-size: 100% 100%;
 }
 .swiper-button-prev{
   left: -30px!important;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: url('../images/aleft_2.jpg') no-repeat;
+  background-size: 100% 100%;
 }
 .caseBanner .swiper-container-case .swiper-slide .box .img{
   width: 100%;
@@ -357,13 +369,14 @@
   padding: 17px;
 }
 .caseBanner .swiper-container-case .swiper-slide .box .caseCont .imgs{
-  width: 152px;
+  max-width: 142px;
   height: 36px;
 }
 .caseBanner .swiper-container-case .swiper-slide .box .caseCont .imgs img{
-  width: 100%;
+  /* width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; */
+  height: 100%;
 }
 .caseBanner .swiper-container-case .swiper-slide .box .caseCont .textRow{
   font-size: 14px;
@@ -376,6 +389,11 @@
   font-size: 20px;
   font-weight: bold;
   color: #474e5f;
+  height: 52px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 
@@ -400,8 +418,8 @@
   border:1px solid #e5e5e5;
 }
 .advertPlate .plate img{
-  width: 100px;
-  height: 90px;
+  min-width: 100px;
+  max-height: 90px;
 }
 .contents .more{
   text-align: center;

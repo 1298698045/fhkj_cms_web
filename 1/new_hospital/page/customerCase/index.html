@@ -128,18 +128,21 @@
         .cont_wrap {
             padding: 16px;
         }
-
-        .cont_wrap .desc {
-            font-size: 16px;
-            color: #2f3342;
-            padding-bottom: 26px;
-        }
-
-        .cont_wrap .row {
-            display: flex;
-            justify-content: space-between;
+        .cont_wrap .keyword{
             font-size: 14px;
             color: #626775;
+            line-height: 30px;
+            font-weight: bold;
+        }
+        .cont_wrap .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #474e5f;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
 
         .pagination {
@@ -174,16 +177,11 @@
                                 <img :src="item.imageUrl" alt="">
                             </p>
                             <div class="cont_wrap">
-                                <div class="desc">
-                                    {{item.contentTitle}}
+                                <div class="keyword">
+                                    {{item.contentKeyword}}
                                 </div>
-                                <div class="row">
-                                    <p>
-                                        {{item.contentSource}}
-                                    </p>
-                                    <p>
-                                        {{item.createDate}}
-                                    </p>
+                                <div class="title">
+                                    {{item.contentTitle}}
                                 </div>
                             </div>
                         </div>
@@ -273,9 +271,9 @@
                 return moment(date).format(fmt)
             },
             handleJournlism(item){
-                // {ms:channel type='self'}
-                //     this.goto("{ms:global.url/}${field.typepath}/"+ item.id + ".html")
-                // {/ms:channel}
+                {ms:channel type='self'}
+                    this.goto("{ms:global.url/}${field.typepath}/"+ item.id + ".html")
+                {/ms:channel}
             },
         }
         

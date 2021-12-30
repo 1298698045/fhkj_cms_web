@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1300px">
     <title>北京凤凰世纪科技 - 协同办公管理系统（OA）</title>
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="{ms:global.host/}/static/plugins/element-ui/2.15.1/theme-chalk/index.min.css" />
     <link rel="shortcut icon" href="{ms:global.host/}/{ms:global.style/}/images/tab.png" type="image/x-icon" />
     <style>
-        .header.active{
+        .header.active {
             z-index: -1;
         }
+
         .el-dialog__header {
             text-align: center;
             line-height: 48px;
@@ -63,8 +64,9 @@
 
         .new_banner {
             width: 100%;
-            height: 600px;
+            height: 375px;
             background: url('{ms:global.host/}/{ms:global.style/}/images/banner_1.jpg') no-repeat;
+            background-size: cover;
             position: relative;
             z-index: 1;
         }
@@ -332,34 +334,39 @@
             z-index: 999;
             cursor: pointer;
         }
-        .container .normal .content .item_box:nth-child(1){
+
+        .container .normal .content .item_box:nth-child(1) {
             width: 23%;
-            height:320px;
+            height: 320px;
             background: url('{ms:global.host/}/{ms:global.style/}/images/2.1_a_tu_1.png');
             background-repeat: no-repeat;
             background-size: cover;
         }
-        .container .normal .content .item_box:nth-child(2){
+
+        .container .normal .content .item_box:nth-child(2) {
             width: 23%;
-            height:320px;
+            height: 320px;
             background: url('{ms:global.host/}/{ms:global.style/}/images/2.1_a_tu_2.png');
             background-repeat: no-repeat;
             background-size: cover;
         }
-        .container .normal .content .item_box:nth-child(3){
+
+        .container .normal .content .item_box:nth-child(3) {
             width: 23%;
-            height:320px;
+            height: 320px;
             background: url('{ms:global.host/}/{ms:global.style/}/images/2.1_a_tu_3.png');
             background-repeat: no-repeat;
             background-size: cover;
         }
-        .container .normal .content .item_box:nth-child(4){
+
+        .container .normal .content .item_box:nth-child(4) {
             width: 23%;
-            height:320px;
+            height: 320px;
             background: url('{ms:global.host/}/{ms:global.style/}/images/2.1_a_tu_4.png');
             background-repeat: no-repeat;
             background-size: cover;
         }
+
         .container .normal .content .box_wrap .item_box:hover .back {
             display: none;
         }
@@ -441,75 +448,89 @@
             text-align: center;
             color: #626775;
         }
-        #yy{
+
+        #yy {
             padding: 33px 40px;
             background: #f6f6f9;
         }
-        .yingyong{
-          max-width: 1200px;
-          width: 100%;
-          margin: 0 auto;
-          display: flex;
-          justify-content: space-around;
+
+        .yingyong {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
         }
-          .yingyong  .imgs{
+
+        .yingyong .imgs {
             width: 605px;
             height: 400px;
-          }
-            .yingyong  .imgs   img{
-              width: 100%;
-              height: 100%;
-            }
-          .yingyong .r_text{
+        }
+
+        .yingyong .imgs img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .yingyong .r_text {
             width: 480px;
             margin-left: 129px;
             padding-top: 30px;
-          }
-            .yingyong .r_text .box_cont:first-child{
-              margin: 0;
-            }
-            .yingyong .r_text .h3_title{
-              font-size: 40px;
-              font-weight: bold;
-              color: #2f3342;
-            }
-            .yingyong .r_text .cont{
-              font-size: 16px;
-              color: #626775;
-            }
-            .yingyong .r_text  .apply{
-              width: 148px;
-              height: 48px;
-              line-height: 48px;
-              text-align: center;
-              font-size: 14px;
-              color: #2f3342;
-              border: 1px solid #2f3342;
-              margin-top: 60px;
-            }
-            .yingyong .r_text .apply:hover{
-              color: #4f98ff;
-              border: 1px solid #4f98ff;
-              cursor: pointer;
-            }
-            .yingyong .r_text .box_cont{
-              margin-top: 52px;
-            }
-            .yingyong .r_text .box_cont  .img_title{
+        }
+
+        .yingyong .r_text .box_cont:first-child {
+            margin: 0;
+        }
+
+        .yingyong .r_text .h3_title {
+            font-size: 40px;
+            font-weight: bold;
+            color: #2f3342;
+        }
+
+        .yingyong .r_text .cont {
+            font-size: 16px;
+            color: #626775;
+        }
+
+        .yingyong .r_text .apply {
+            width: 148px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            font-size: 14px;
+            color: #2f3342;
+            border: 1px solid #2f3342;
+            margin-top: 60px;
+        }
+
+        .yingyong .r_text .apply:hover {
+            color: #4f98ff;
+            border: 1px solid #4f98ff;
+            cursor: pointer;
+        }
+
+        .yingyong .r_text .box_cont {
+            margin-top: 52px;
+        }
+
+        .yingyong .r_text .box_cont .img_title {
             font-size: 20px;
             color: #2f3342;
             font-weight: bold;
-            }
-            .yingyong .r_text .box_cont  .img_title img{
-                width: 24px;
-                height: 24px;
-                margin-right: 5px;
-            }
-            .yingyong .r_text .box_cont  .desc{
+        }
+
+        .yingyong .r_text .box_cont .img_title img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+
+        .yingyong .r_text .box_cont .desc {
             font-size: 16px;
             color: #626775;
             margin-top: 14px;
-            }
+        }
 
         .container .shadow .box_cont:first-child {
             margin: 0;
@@ -706,28 +727,34 @@
                         <div class="box_wrap">
                             <div class="item_box">
                                 <div class="back">
-                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/1_img_15.png' alt="" />
+                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/1_img_15.png'
+                                        alt="" />
                                 </div>
                                 <div class="back_active">
-                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/apple_link.png' alt="" />
+                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/apple_link.png'
+                                        alt="" />
                                 </div>
                                 <div class="text">苹果版</div>
                             </div>
                             <div class="item_box">
                                 <div class="back">
-                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/1_img_16.png' alt="" />
+                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/1_img_16.png'
+                                        alt="" />
                                 </div>
                                 <div class="back_active">
-                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/android.png' alt="" />
+                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/android.png'
+                                        alt="" />
                                 </div>
                                 <div class="text">安卓版</div>
                             </div>
                             <div class="item_box">
                                 <div class="back">
-                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/1_img_17.png' alt="" />
+                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/1_img_17.png'
+                                        alt="" />
                                 </div>
                                 <div class="back_active">
-                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/wechat.jpg' alt="" />
+                                    <img class="imgs" src='{ms:global.host/}/{ms:global.style/}/images/wechat.jpg'
+                                        alt="" />
                                 </div>
                                 <div class="text">微信小程序端</div>
                             </div>
@@ -755,8 +782,8 @@
 <script>
     const vum = new Vue({
         el: '#app',
-        mixins:[mixin],
-        components:{
+        mixins: [mixin],
+        components: {
             Modal
         },
         data() {
@@ -765,19 +792,19 @@
                 activeTab: 0,
                 productList: [
                     {
-                        name:'需求分析'
+                        name: '需求分析'
                     },
                     {
-                        name:'方案思路'
+                        name: '方案思路'
                     },
                     {
-                        name:'应用优势'
+                        name: '应用优势'
                     },
                     {
-                        name:'功能模块'
+                        name: '功能模块'
                     },
                     {
-                        name:'下载关注'
+                        name: '下载关注'
                     }
                 ],
                 workList: [
@@ -815,65 +842,65 @@
                 tabIdx: 0,
                 isFixed: false,
                 defaultIndexInfo: [
-                    {index:0, id:'xq'},
-                    {index:1, id: 'fa'},
-                    {index:2, id: 'yy'},
-                    {index:3, id: 'gn'},
-                    {index:4, id: 'kh'}
+                    { index: 0, id: 'xq' },
+                    { index: 1, id: 'fa' },
+                    { index: 2, id: 'yy' },
+                    { index: 3, id: 'gn' },
+                    { index: 4, id: 'kh' }
                 ],
             }
         },
-        watch:{
-            isTop(val,old){
-                if(val){
+        watch: {
+            isTop(val, old) {
+                if (val) {
                     this.tabIdx = 0
-                    $('.header').css('z-index','999')
+                    $('.header').css('z-index', '999')
                 }
             }
         },
-        mounted(){
-            window.addEventListener('mousewheel',this.handleScroll)
+        mounted() {
+            window.addEventListener('mousewheel', this.handleScroll)
         },
         beforeDestroy() {
-            window.removeEventListener('mousewheel',this.handleScroll)
+            window.removeEventListener('mousewheel', this.handleScroll)
         },
         methods: {
             handleMouseover(e, item, index) {
                 this.activeTab = index;
             },
             handleTab(idx) {
-                this.defaultIndexInfo.map(item=>{
+                this.defaultIndexInfo.map(item => {
                     let top = document.getElementById(item.id).offsetTop - 140;
                     console.log(top);
-                    if(item.index==idx){
-                        window.scrollTo({top: top+10})
+                    if (item.index == idx) {
+                        window.scrollTo({ top: top + 10 })
                     }
                 })
                 this.tabIdx = idx;
                 let anchorY = this.$refs.anchor.getBoundingClientRect().top;
-                if(anchorY<=60){
+                if (anchorY <= 60) {
                     this.isFixed = true;
-                    $('.header').css('z-index','-1')
-                }else {
+                    $('.header').css('z-index', '-1')
+                } else {
                     this.isFixed = false;
-                    $('.header').css('z-index','999')
+                    $('.header').css('z-index', '999')
                 }
             },
-            handleScroll(e){
+            handleScroll(e) {
                 let anchorY = this.$refs.anchor.getBoundingClientRect().top;
-                if(anchorY<=60){
+                if (anchorY <= 60) {
                     this.isFixed = true;
-                    $('.header').css('z-index','-1')
-                }else {
+                    $('.header').css('z-index', '-1')
+                } else {
                     this.isFixed = false;
-                    $('.header').css('z-index','999')
+                    $('.header').css('z-index', '999')
                 }
-                let top = e.clientY= 50;
-                let idx = this.defaultIndexInfo.findIndex((item,index)=>{
+                let top = e.clientY = 50;
+                let idx = this.defaultIndexInfo.findIndex((item, index) => {
                     return top <= this.$refs[item.id].getBoundingClientRect().top;
                 });
                 console.log('idx:', idx)
-                this.tabIdx = idx < 0 ? this.defaultIndexInfo.length-1 : idx;
+                this.tabIdx = idx < 0 ? this.defaultIndexInfo.length - 1 : idx;
             }
         },
     })
