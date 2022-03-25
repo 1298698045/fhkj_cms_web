@@ -19,11 +19,13 @@
             padding-top: 66px;
             width: 100%;
             height: 256px;
-            background-image: url('{ms:global.host/}/{ms:global.style/}/images/gy_bg.jpg');
+            /* background-image: url('{ms:global.host/}/{ms:global.style/}/images/gy_bg.jpg');
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            background-size: 100% 100%; */
         }
-
+        .banners span{
+            color: #fff !important;
+        }
         .banners h3 {
             font-size: 50px;
             font-weight: bold;
@@ -150,14 +152,16 @@
         }
 
         .jd_cont_wrap .foot_cont .process .boxTop .r .name {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             color: #2f3342;
+            padding-bottom: 10px;
         }
 
         .jd_cont_wrap .foot_cont .process .boxTop .r .desc {
-            font-size: 16px;
+            font-size: 14px;
             color: #626675;
+            line-height: 1.5;
         }
 
         .jd_cont_wrap .foot_cont .process .boxBottom {
@@ -200,14 +204,16 @@
         }
 
         .jd_cont_wrap .foot_cont .process .boxBottom .r .name {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             color: #2f3342;
+            padding-bottom: 10px;
         }
 
         .jd_cont_wrap .foot_cont .process .boxBottom .r .desc {
-            font-size: 16px;
+            font-size: 14px;
             color: #626675;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -216,17 +222,16 @@
     <div class="wrapper" id="app">
         <#include "head.html" />
         <div class="center">
-            <div class="banners">
-                <h3>
-                    让智慧医疗管理更便捷，让信任更简单
-                </h3>
-                <p class="text">
-                    以用户为中心，用工匠精神打造行业软件
-                </p>
+            {ms:channel typeid='1438712142158802946' type='self'}
+            {ms:arclist flag='hot' size=1}
+            <div class="banners" style="background: url('{ms:global.host/}{@ms:file field.litpic/}') no-repeat;background-size: cover;background-size: 100% 100%;">
+                ${field.content}
             </div>
+            {/ms:arclist}
+            {/ms:channel}
             <div class="content">
                 <div class="shadow" id='gs'>
-                    <h3 class="title">公司简介</h3>
+                    <h3 class="title">${field.typetitle}</h3>
                     {ms:channel type="self" typeid='1441312916726538242'}
                     {ms:arclist size=1}
                     <div class="article">
@@ -270,48 +275,70 @@
                         发展历程
                     </p>
                     <div class="process">
-                        <div class="boxTop">
+                        <div class="boxTop" style="width: 18%;">
                             <div class="l">
                                 <p class="solid"></p>
                                 <p class="radius"></p>
                                 <p class="time">2016</p>
                             </div>
                             <div class="r">
-                                <p class="name">凤凰世纪成立</p>
-                                <p class="desc">长期服务于医院和政府机构</p>
+                                <p class="name">公司成立</p>
+                                <!-- <p class="desc">长期服务于医院和政府机构</p> -->
                             </div>
                         </div>
                         <div class="boxBottom">
                             <div class="l">
-                                <p class="time">2018</p>
+                                <p class="time">2017</p>
                                 <p class="radius"></p>
                                 <p class="solid"></p>
                             </div>
                             <div class="r">
-                                <p class="name">通过国家级高新技术企业认定</p>
-                                <p class="desc">长期服务于医院和政府机构</p>
+                                <p class="name">人力资源、协同办公产品发布</p>
+                                <!-- <p class="desc">长期服务于医院和政府机构</p> -->
                             </div>
                         </div>
                         <div class="boxTop">
                             <div class="l">
                                 <p class="solid"></p>
                                 <p class="radius"></p>
-                                <p class="time">2019</p>
+                                <p class="time">2018</p>
                             </div>
                             <div class="r">
-                                <p class="name">通过了“双软企业”认证</p>
-                                <p class="desc">《软件企业证书》《软件产品证书》</p>
+                                <p class="name">通过国家级高新技术企业认定</p>
+                                <p class="desc">绩效管理系统、医院运营管理系统产品发布</p>
                             </div>
                         </div>
                         <div class="boxBottom">
                             <div class="l">
-                                <p class="time">2020</p>
+                                <p class="time">2019</p>
                                 <p class="radius"></p>
                                 <p class="solid"></p>
                             </div>
                             <div class="r">
-                                <p class="name">通过国家级高新技术企业认定</p>
-                                <p class="desc">长期服务于医院和政府机构</p>
+                                <p class="name">通过了“双软企业”认证《软件企业证书》《软件产品证书》</p>
+                                <p class="desc">合同管理系统、智能排班考勤系统、智慧医院内控管理平台、医疗自助服务应用软件产品发布</p>
+                            </div>
+                        </div>
+                        <div class="boxTop">
+                            <div class="l">
+                                <p class="solid"></p>
+                                <p class="radius"></p>
+                                <p class="time">2020</p>
+                            </div>
+                            <div class="r">
+                                <p class="name">互联网医院软件、智慧医疗患者服务平台、电子票据管理平台、内外网门户网站系统产品发布</p>
+                                <!-- <p class="desc">《软件企业证书》《软件产品证书》</p> -->
+                            </div>
+                        </div>
+                        <div class="boxBottom">
+                            <div class="l">
+                                <p class="time">2021</p>
+                                <p class="radius"></p>
+                                <p class="solid"></p>
+                            </div>
+                            <div class="r">
+                                <p class="name">医德医风管理系统、不良事件管理系统、招聘管理系统软件、智慧党建管理系统、医院智慧管理系统产品发布</p>
+                                <!-- <p class="desc">长期服务于医院和政府机构</p> -->
                             </div>
                         </div>
                     </div>

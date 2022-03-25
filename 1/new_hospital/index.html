@@ -38,6 +38,7 @@
         font-size: 44px;
         font-weight: bold;
         color: #ffffff;
+        padding-bottom: 20px;
     }
 
     .bannerDesc .title .desc {
@@ -124,6 +125,11 @@
                             ${field.typetitle}
                         </p>
                         {/ms:channel}
+                        {ms:channel type='self' orderby='sort' typeid='1438711778957242369' }
+                        <p class="tab<#if field.index!=1> active</#if>">
+                            成功案例
+                        </p>
+                        {/ms:channel}
                     </div>
                     {ms:channel type='son' orderby='sort' typeid='1400716168132456449'}
                     <div class="uls_wrap<#if field.index==1> active</#if>">
@@ -149,6 +155,35 @@
                                     </span>
                                 </li>
                             </a>
+                            </#if>
+                            {/ms:arclist}
+                        </ul>
+                    </div>
+                    {/ms:channel}
+                    {ms:channel type='self' orderby='sort' typeid='1438711778957242369'}
+                    <div class="uls_wrap<#if field.index!=1> active</#if>">
+                        <ul class="uls">
+                            {ms:arclist size=10 flag='c' orderby='sort'}
+                            <#if field.flag?contains('tv')>
+                                <a href="${field.descrip}" target="_blank" style="width: 50%;">
+                                    <li>
+                                        <span class="dian">
+                                        </span>
+                                        <span class="title">
+                                            ${field.title}
+                                        </span>
+                                    </li>
+                                </a>
+                                <#else>
+                                    <a href="${field.descrip}" target="_blank" style="width: 50%;">
+                                        <li>
+                                            <span class="dian">
+                                            </span>
+                                            <span class="title">
+                                                ${field.title}
+                                            </span>
+                                        </li>
+                                    </a>
                             </#if>
                             {/ms:arclist}
                         </ul>
@@ -206,11 +241,11 @@
                     <h3 class="row_title">
                         我们的产品
                     </h3>
-                    <p class="row_desc">
+                    <!-- <p class="row_desc">
                         基础OA + 专业业务管理系统
-                    </p>
+                    </p> -->
                     <div class="row_box_wrap">
-                        {ms:channel type='self' typeid='1438711587575345153'}
+                        {ms:channel type='son' orderby='sort' typeid='1438711587575345153'}
                         <#assign parentlink=field.typelink>
                             {ms:arclist flag='c' orderby='sort'}
                             <div class="child_box"
@@ -382,22 +417,22 @@
                     <div class="caseBanner">
                         <div class="swiper-container-case">
                             <div class="swiper-wrapper">
-                                {ms:arclist}
-                                <div class="swiper-slide" @click="goto('{ms:global.url/}${field.link}')">
+                                {ms:arclist flag='c' orderby='sort'}
+                                <div class="swiper-slide" @click="goto('${field.descrip}')">
                                     <div class="box">
-                                        <p class="img">
-                                            <img :src="'{ms:global.host/}{@ms:file field.litpic/}'" alt="">
-                                        </p>
+                                        <div class="img">
+                                            ${field.content}
+                                        </div>
                                         <div class="caseCont">
-                                            <!-- <#if (field.descrip)>
-                                            <div class="imgs">
-                                                <img src="{ms:global.host/}/${field.descrip}" alt="">
+                                            <div class="row clearfix">
+                                                <div class="imgs fl">
+                                                    <img :src="'{ms:global.host/}{@ms:file field.litpic/}'" alt="">
+                                                </div>
+                                                <span class="key fr">
+                                                    ${field.keyword}
+                                                </span>
                                             </div>
-                                            </#if> -->
                                             <div class="textRow">
-                                                ${field.keyword}
-                                            </div>
-                                            <div class="title">
                                                 ${field.title}
                                             </div>
                                         </div>
@@ -581,6 +616,9 @@
         $(this).addClass('active');
     })
     var swiperCase = new Swiper('.swiper-container-case', {
+        loop: true,
+        speed: 500,
+        autoplay: 1000,
         // pagination: '.swiper-pagination1',
         slidesPerView: 3,
         // paginationClickable: true,
@@ -590,6 +628,13 @@
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
     });
+    swiperCase.container[0].onmouseover = function () {
+        swiperCase.stopAutoplay();
+    }
+    // 鼠标移出开始自动滚动
+    swiperCase.container[0].onmouseout = function () {
+        swiperCase.startAutoplay();
+    }
     // let len = $('.caseBanner .swiper-container-case .swiper-slide').length;
     // if(len<=3){
     //     $('.caseBanner .swiper-container-case .swiper-pagination1').hide()

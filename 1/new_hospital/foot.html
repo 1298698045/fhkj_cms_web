@@ -23,21 +23,23 @@
                     </p>
                     {/ms:channel}
                 </div>
-                <div class="column">
+                <div class="column product">
                     <p class="title">
                         产品中心
                     </p>
-                    {ms:channel type='son' typeid='1438711587575345153'}
-                    <p class="text" @click="goto('{ms:global.url/}${field.typelink}')">
-                        ${field.typetitle}
-                    </p>
-                    {/ms:channel}
+                    <div class="box">
+                        {ms:channel type='son' typeid='1438711587575345153' orderby='sort'}
+                        <p class="text" @click="goto('{ms:global.url/}${field.typelink}')">
+                            ${field.typetitle}
+                        </p>
+                        {/ms:channel}
+                    </div>
                 </div>
                 <div class="column">
                     <p class="title">
                         关于我们
                     </p>
-                    {ms:channel type='son' typeid='1438712142158802946'}
+                    {ms:channel type='son' typeid='1438712142158802946' orderby='sort'}
                     <p class="text" @click="goto('{ms:global.url/}${field.typelink}')">
                         ${field.typetitle}
                     </p>
@@ -47,7 +49,7 @@
             <div class="rBox">
                 <div class="column">
                     <p class="title">
-                        售前咨询
+                        合作咨询
                     </p>
                     <p class="text">
                         <i class="iconfont" style="margin-right: 10px;">
@@ -59,7 +61,7 @@
                         <i class="iconfont" style="margin-right: 10px;">
                             
                         </i>
-                        lzy@phxinfo.com.cn
+                        hz@phxinfo.com.cn
                     </p>
                     <p class="text">
                         <i class="iconfont" style="margin-right: 10px;">

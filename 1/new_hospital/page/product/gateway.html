@@ -21,8 +21,7 @@
         .new_banner {
             width: 100%;
             height: 375px;
-            background: url('{ms:global.host/}/{ms:global.style/}/images/1_banner_2_1.jpg') no-repeat;
-            background-size: cover;
+            background: #999;
         }
 
         .new_banner .bannerText {
@@ -49,9 +48,11 @@
             color: #ffffff;
             font-size: 20px;
         }
-        .new_banner .bannerText .bannerText_child .desc span{
+
+        .new_banner .bannerText .bannerText_child .desc span {
             color: #fff !important;
         }
+
         .new_banner .bannerText .bannerText_child .btn {
             width: 160px;
             height: 45px;
@@ -71,6 +72,7 @@
             color: #ffffff;
             border: 1px solid #4f98ff;
         }
+
         .nav_wrap {
             border-bottom: 1px solid #e2e3e5;
             box-shadow: 0px 1px 0px 0px rgba(228, 228, 228, 1);
@@ -136,32 +138,31 @@
     <div class="wrapper" id="app">
         <#include "head.html" />
         <#assign parenttitle=field.typetitle>
-        {ms:channel typeid='1418535046827040770' type='self'}
-        {ms:arclist artid='1476525293979283458'}
-        <div class="new_banner" style="background: url('{ms:global.host/}{@ms:file field.litpic/}') no-repeat;background-size: cover;">
-            <div class="bannerText">
-                <div class="bannerText_child">
-                    <p class="title">${parenttitle}</p>
-                    <div class="desc">${field.content}</div>
-                    <!-- <p class="desc">提供从合同起草、审批、签订、执行、归档、统计等全生命周期的服务，
-                    </p>
-                    <p class="desc" style="margin-top:20px">帮助企业打造内外一体、可信、可靠、可用、便捷、安全、合规的新型合同管理模式。</p> -->
-                    <p class="btn" @click="handleOpen">
-                        申请试用
-                    </p>
+            {ms:channel typeid='1418535046827040770' type='self'}
+            {ms:arclist artid='1506977272861736962'}
+            <div class="new_banner"
+                :style="'${field.litpic}'=='[]'?'background:#999':'background: url(\'{ms:global.host/}{@ms:file field.litpic/}\') no-repeat;background-size: cover;'">
+                <div class="bannerText">
+                    <div class="bannerText_child">
+                        <p class="title">${parenttitle}</p>
+                        <div class="desc">${field.content}</div>
+                        <p class="btn" @click="handleOpen">
+                            申请试用
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        {/ms:arclist}
-        {/ms:channel}
-        <div class="center">
-            <div class="content">
-                网页更新中......
+            {/ms:arclist}
+            {/ms:channel}
+            <div class="center">
+                <div class="content">
+                    网页更新中......
+                </div>
             </div>
-        </div>
-        <#include "foot.html" />
-        <#include "right.html" />
-        <Modal ref="childModal" />
+            <#include "foot.html" />
+            <#include "right.html" />
+            <Modal ref="childModal" />
+    </div>
 </body>
 <script src="{ms:global.host/}/{ms:global.style/}/js/jquery.js"></script>
 <script src="{ms:global.host/}/{ms:global.style/}/js/swiper-3.4.2.min.js"></script>
@@ -246,9 +247,6 @@
                 isFixed: false
             }
         },
-        mounted() {
-            window.addEventListener('mousewheel', this.handleScroll)
-        },
         beforeDestroy() {
             window.removeEventListener('mousewheel', this.handleScroll)
         },
@@ -266,20 +264,6 @@
                     }
                 })
             },
-            handleScroll(e) {
-                let anchorY = this.$refs.anchor.getBoundingClientRect().top;
-                if (anchorY <= 60) {
-                    this.isFixed = true;
-                } else {
-                    this.isFixed = false;
-                }
-                let top = e.clientY;
-                let idx = this.defaultIndexInfo.findIndex((item, index) => {
-                    return top <= this.$refs[item.id].getBoundingClientRect().top;
-                });
-                console.log('idx:', idx)
-                this.tabIdx = idx < 0 ? 10 : idx;
-            }
         },
     })
     var mySwiper = new Swiper('.swiper-container', {

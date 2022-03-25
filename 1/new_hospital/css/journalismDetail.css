@@ -135,8 +135,8 @@
   }
   .wrap .center .container .r_box {
     width: 25%;
-    background: #fff;
-    padding: 34px;
+    /* background: #fff; */
+    /* padding: 34px; */
   }
   .wrap .center .container .r_box .trends {
     font-size: 24px;

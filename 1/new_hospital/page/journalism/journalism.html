@@ -22,7 +22,9 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
-
+        .banners span{
+            color: #fff !important;
+        }
         .banners h3 {
             font-size: 50px;
             font-weight: bold;
@@ -151,6 +153,9 @@
         .pagination {
             text-align: center;
         }
+        .hideTabs .tab{
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -158,13 +163,23 @@
     <div id="app" class="wrap" v-cloak>
         <#include "head.html" />
         <div class="center">
+            <!-- {ms:arclist flag='b' size=1}
+            <div class="banners" id="anchor1" style="background: url('{ms:global.host/}{@ms:file field.litpic/}') no-repeat;background-size: cover;background-size: 100% 100%;">
+                ${field.content}
+            </div>
+            {/ms:arclist} -->
             <div class="banners" id="anchor1">
                 <h3>
-                    20+年医疗行业经验 1500+医院用户
+                    20+年医疗行业经验 1000+医院用户
                 </h3>
                 <p class="text">
-                    面向医院管理，链接移动办公，成就智慧医院
+                    面向医院智慧管理，成就医院智慧管理
                 </p>
+            </div>
+            <div class="hideTabs" v-show="false">
+                {ms:channel type='son'}
+                <p class="tab" pinyin="${field.pinyin}">${field.typetitle}</p>
+                {/ms:channel}
             </div>
             <div class="contents">
                 <div class="case_wrap">
@@ -176,7 +191,7 @@
                         </div>
                     </div>
                     <div class="customerWrap">
-                        <div class="box_box" @click="item.contentType.indexOf('tv')!=-1?goto(item.contentDescription):handleJournlism(item)" v-for="(item,index) in lines" :key="index">
+                        <div class="box_box" @click="item.contentType.indexOf('tv')!=-1?goto(item.contentDescription):handleJournlism(item)" v-for="(item,index) in lines" :key="index" v-if="item.contentType.indexOf('b')==-1">
                             <p class="img">
                                 <img :src="item.imageUrl" alt="">
                             </p>
@@ -188,9 +203,9 @@
                                     <p>
                                         {{item.contentSource}}
                                     </p>
-                                    <p>
+                                    <!-- <p>
                                         {{item.contentDatetime}}
-                                    </p>
+                                    </p> -->
                                 </div>
                             </div>
                         </div>
@@ -220,6 +235,7 @@
 <script type="text/javascript" src="${base}/static/plugins/vue-router/3.5.1/vue-router.js"></script>
 <script src="{ms:global.host/}/{ms:global.style/}/js/app.js"></script>
 <script src="{ms:global.host/}/static/plugins/element-ui/2.15.1/index.min.js"></script>
+<script src="{ms:global.host/}/{ms:global.style/}/js/pinyin.js"></script>
 <script>
     var app = new Vue({
         el: '#app',
@@ -284,19 +300,17 @@
             },
             handleJournlism(item) {
                 var str = '';
-                if (item.categoryTitle == '签约新闻') {
-                    str = 'qianyuexinwen/'
-                } else if (item.categoryTitle == '验收新闻') {
-                    str = 'yanshouxinwen/'
-                } else if (item.categoryTitle == '媒体报道') {
-                    str = 'meitibaodao/'
-                } else if (item.categoryTitle == '成功案例') {
-                    str = 'chenggonganli/'
+                for(var i=0; i<$('.hideTabs .tab').length; i++){
+                    if(item.categoryTitle == $('.hideTabs .tab').eq(i).html()){
+                        str = $('.hideTabs .tab').eq(i).attr('pinyin')
+                        break;
+                    }
                 }
                 {ms:channel type='self' }
-                    this.goto("{ms:global.url/}${field.typepath}/" + str + item.id + ".html")
+                    this.goto("{ms:global.url/}${field.typepath}/" + str + '/' + item.id + ".html")
                 {/ms:channel}
             },
+            
         }
 
     })

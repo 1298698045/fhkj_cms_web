@@ -38,15 +38,15 @@
                         </div>
                         <div class="row">
                             <p class="time">
-                                <span>
+                                <!-- <span>
                                     发布时间：${(field.date?string("yyyy-MM-dd"))!}
                                 </span>
-                                <!-- <span>
-                                    来源：${field.source}
-                                </span>
                                 <span>
-                                    点击数： ${field.hit} 次
+                                    来源：${field.source}
                                 </span> -->
+                                <span style="color: #fff;">
+                                    点击数： ${field.hit} 次
+                                </span>
                             </p>
                         </div>
                         <div class="hr">
@@ -68,22 +68,25 @@
                     <div class="l_bottom"></div>
                 </div>
                 <div class="r_box">
-                    <div class="trends">
-                        热门推荐
+                    <div style="background: #fff;padding:34px;">
+                        <div class="trends">
+                            热门推荐
+                        </div>
+                        {ms:channel typeid='1400716168132456449' type='self'}
+                        {ms:arclist size=10 flag='hot' orderby='sort' size=6}
+                            <#if field.flag?contains('tv')>
+                            <div class="middle" flag="${field.flag}">
+                                <div class="hidden" style="display:none;visibility: hidden;">${field.content}</div>
+                                <a href="#" class="link" target="_blank">${field.title}</a>
+                            </div>
+                            <#else>
+                            <div class="middle" flag="${field.flag}">
+                                <a href="#" @click="goto('{ms:global.url/}${field.link}')" target="_blank">${field.title}</a>
+                            </div>
+                            </#if>
+                        {/ms:arclist}
+                        {/ms:channel}
                     </div>
-                    {ms:arclist size=10 flag='hot' orderby='sort'}
-                        <#if field.flag?contains('tv')>
-                        <div class="middle" flag="${field.flag}">
-                            <div class="hidden" style="display:none;visibility: hidden;">${field.content}</div>
-                            <a href="#" class="link" target="_blank">${field.title}</a>
-                        </div>
-                        <#else>
-                        <div class="middle" flag="${field.flag}">
-                            <a href="#" @click="goto('{ms:global.url/}${field.link}')" target="_blank">${field.title}</a>
-                        </div>
-                        </#if>
-                    {/ms:arclist}
-
                 </div>
             </div>
         </div>

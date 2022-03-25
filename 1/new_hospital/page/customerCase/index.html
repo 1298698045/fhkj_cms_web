@@ -21,7 +21,9 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
-
+        .banners span{
+            color: #fff !important;
+        }
         .banners h3 {
             font-size: 50px;
             font-weight: bold;
@@ -126,13 +128,30 @@
         }
 
         .cont_wrap {
-            padding: 16px;
+            padding: 10px;
+        }
+        .cont_wrap .imgs{
+            /* width: 142px !important;
+            max-width: 142px; */
+            height: 36px;
+            margin-bottom: 10px;
+        }
+        .cont_wrap .row .key{
+            font-size: 12px;
+            color: #666;
+            padding: 5px;
+            background: #eee;
+            border-radius: 2px;
+            margin-top: 5px;
+        }
+        .cont_wrap .imgs img{
+            height: 100%;
         }
         .cont_wrap .keyword{
             font-size: 14px;
             color: #626775;
             line-height: 30px;
-            font-weight: bold;
+            /* font-weight: bold; */
         }
         .cont_wrap .title {
             font-size: 20px;
@@ -159,7 +178,7 @@
                     注重客户应用因客户成功而成功
                 </h3>
                 <p class="text">
-                    帮助医院建立管理在日常办公中有效提高效率的管理平台，形成随时随地轻松办公
+                    帮助医院建设符合智慧管理分级标准的医院智慧管理平台，为医院的高质量发展奠定基础
                 </p>
             </div>
             <div class="contents">
@@ -172,15 +191,20 @@
                         </div>
                     </div>
                     <div class="customerWrap">
-                        <div class="box_box" @click="handleJournlism(item)" v-for="(item,index) in lines" :key="index">
-                            <p class="img">
-                                <img :src="item.imageUrl" alt="">
-                            </p>
+                        <!--  v-if="item.contentType.indexOf('hot')==-1" -->
+                        <div class="box_box" v-for="(item,index) in lines" :key="index" @click="goto(item.contentDescription)">
+                            <div class="img" v-html="item.contentDetails">
+                            </div>
                             <div class="cont_wrap">
-                                <div class="keyword">
-                                    {{item.contentKeyword}}
+                                <div class="row clearfix">
+                                    <div class="imgs fl">
+                                        <img :src="item.imageUrl" alt="">
+                                    </div>
+                                    <span class="key fr">
+                                        {{item.contentKeyword}}
+                                    </span>
                                 </div>
-                                <div class="title">
+                                <div class="keyword">
                                     {{item.contentTitle}}
                                 </div>
                             </div>

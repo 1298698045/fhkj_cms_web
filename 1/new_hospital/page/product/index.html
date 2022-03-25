@@ -25,6 +25,7 @@
         .product_wrap .banners {
             text-align: right;
             padding-top: 155px;
+            background: #999;
         }
 
         .product_wrap .banners h3 {
@@ -168,7 +169,7 @@
         .bannerDescBox {
             width: 100%;
             position: absolute;
-            top: 102px;
+            top: 60px;
             z-index: 999;
         }
 
@@ -184,6 +185,7 @@
             font-size: 44px;
             font-weight: bold;
             color: #ffffff;
+            padding-bottom: 20px;
         }
 
         .bannerDesc .title .desc {
@@ -260,7 +262,7 @@
                     <div class="product">
                         <h3 class="title">应用产品及平台</h3>
                         <div class="box_wrap">
-                            {ms:channel type='self'}
+                            {ms:channel type='son' orderby='sort'}
                             <#assign parentlink=field.typelink>
                                 {ms:arclist orderby='sort'}
                                 <div class="box"

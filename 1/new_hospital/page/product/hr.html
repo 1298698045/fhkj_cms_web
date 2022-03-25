@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1300px">
-    <title>北京凤凰世纪科技-人力资源管理系统</title>
+    <title>北京凤凰世纪科技-${field.typetitle}</title>
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
@@ -21,14 +21,14 @@
         .new_banner {
             width: 100%;
             height: 375px;
-            background: url('{ms:global.host/}/{ms:global.style/}/images/1_banner_2_1.jpg') no-repeat;
-            background-size: cover;
+            /* background: url('{ms:global.host/}/{ms:global.style/}/images/1_banner_2_1.jpg') no-repeat; */
+            /* background-size: cover; */
         }
 
         .new_banner .bannerText {
             width: 1200px;
             margin: 0 auto;
-            padding-top: 102px;
+            padding-top: 60px;
         }
 
         .new_banner .bannerText .bannerText_child {
@@ -42,13 +42,16 @@
             font-size: 44px;
             font-weight: bold;
             color: #ffffff;
+            padding-bottom: 20px;
         }
 
         .new_banner .bannerText .bannerText_child .desc {
             color: #ffffff;
             font-size: 20px;
         }
-
+        .new_banner .bannerText .bannerText_child .desc span{
+            color: #fff !important;
+        }
         .new_banner .bannerText .bannerText_child .btn {
             width: 160px;
             height: 45px;
@@ -519,21 +522,22 @@
 <body>
     <div class="wrapper" id="app">
         <#include "head.html" />
-        <div class="new_banner">
+        <#assign parenttitle=field.typetitle>
+        {ms:channel typeid='1418535046827040770' type='self'}
+        {ms:arclist artid='1476477731125571585'}
+        <div class="new_banner" style="background: url('{ms:global.host/}{@ms:file field.litpic/}') no-repeat;background-size: cover;">
             <div class="bannerText">
                 <div class="bannerText_child">
-                    <p class="title">人力资源管理系统</p>
-                    <p class="desc">支持复合组织架构和员工全生命周期在线管理
-
-
-                    </p>
-                    <p class="desc" style="margin-top:20px">人力薪税 随需应变的全模块人力资源管理云平台</p>
+                    <p class="title">${parenttitle}</p>
+                    <div class="desc">${field.content}</div>
                     <p class="btn" @click="handleOpen">
                         申请试用
                     </p>
                 </div>
             </div>
         </div>
+        {/ms:arclist}
+        {/ms:channel}
         <div class="center">
             <div class="nav_wrap" :class="{active:isFixed}" ref="anchor">
                 <div class="nav">

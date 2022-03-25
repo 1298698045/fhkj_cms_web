@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1300px">
-    <title>北京凤凰世纪科技 - 协同办公管理系统（OA）</title>
+    <title>北京凤凰世纪科技 - ${field.typetitle}</title>
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/swiper-3.4.2.min.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/public.css">
     <link rel="stylesheet" href="{ms:global.host/}/{ms:global.style/}/css/header.css">
@@ -74,7 +74,7 @@
         .new_banner .bannerText {
             width: 1200px;
             margin: 0 auto;
-            padding-top: 102px;
+            padding-top: 60px;
         }
 
         .new_banner .bannerText .bannerText_child {
@@ -88,13 +88,16 @@
             font-size: 44px;
             font-weight: bold;
             color: #ffffff;
+            padding-bottom: 20px;
         }
 
         .new_banner .bannerText .bannerText_child .desc {
             color: #ffffff;
             font-size: 20px;
         }
-
+        .new_banner .bannerText .bannerText_child .desc span{
+            color: #fff !important;
+        }
         .new_banner .bannerText .bannerText_child .btn {
             width: 160px;
             height: 45px;
@@ -594,10 +597,15 @@
         <div class="new_banner">
             <div class="bannerText">
                 <div class="bannerText_child">
-                    <p class="title">协同办公管理系统（OA）</p>
-                    <p class="desc">解决全周期、全领域办公需求
+                    <div class="title">${field.typetitle}</div>
+                    {ms:channel typeid='1418535046827040770' type='self'}
+                        {ms:arclist artid='1476476777122738178'}
+                        <div class="desc">${field.content}</div>
+                        {/ms:arclist}
+                    {/ms:channel}
+                    <!-- <p class="desc">解决全周期、全领域办公需求
                     </p>
-                    <p class="desc" style="margin-top: 20px;">基于平台化的产品架构，随需定制功能应用</p>
+                    <p class="desc" style="margin-top: 20px;">基于平台化的产品架构，随需定制功能应用</p> -->
                     <p class="btn" @click="handleOpen">
                         申请试用
                     </p>
