@@ -209,13 +209,13 @@
                         我们的服务
                     </h3>
                     <p class="service_desc">
-                        凤凰世纪 | 医院行业合作伙伴
+                        与医院管理者同行 | 医院的高质量发展奠定基础
                     </p>
                     <div class="service_content">
                         <p class="paragraph">
-                            为医院行业用户提供办公软件产品的部署、培训、实施服务；借助我们团队在医院行业多年经验和自主研发的产品，帮助医院行业用户全面提升管理效率。
+                            凤凰科技专注于医院智慧管理产品研究，既遵循《医院智慧管理分级评估标准体系》也涵盖了医院行政管理要素，为用户提供咨询、方案、设计、开发、产品、部署、培训、实施售后等全方位的服务，满足用户的不同需求。
                         </p>
-                        <p>
+                        <!-- <p>
                             1. 软件产品免费的标准部署、培训、实施服务。
                         </p>
                         <p>
@@ -226,14 +226,14 @@
                         </p>
                         <p>
                             4. 医院用户在内控管理方面及其它个性定制方面的需求。
-                        </p>
+                        </p> -->
                     </div>
                     <div class="apply" @click="handleOpen">
                         申请试用
                     </div>
                 </div>
                 <div class="rightCont">
-                    <img src="{ms:global.host/}/{ms:global.style/}/images/1_dimg.jpg" alt="">
+                    <img src="{ms:global.host/}/{ms:global.style/}/images/1_dimg_1.jpg" alt="">
                 </div>
             </div>
             <div class="home_content">
@@ -241,9 +241,9 @@
                     <h3 class="row_title">
                         我们的产品
                     </h3>
-                    <!-- <p class="row_desc">
-                        基础OA + 专业业务管理系统
-                    </p> -->
+                    <p class="row_desc">
+                        与医院管理者同行 | 符合医院智慧管理分级评估标准体系
+                    </p>
                     <div class="row_box_wrap">
                         {ms:channel type='son' orderby='sort' typeid='1438711587575345153'}
                         <#assign parentlink=field.typelink>
@@ -328,10 +328,17 @@
                         我们的优势
                     </h3>
                     <p class="service_desc">
+                        与医院管理者同行 | 
+                        专注
+                        <span>
+                        </span>
+                        专业
+                        <span>
+                        </span>
                         智能
                         <span>
                         </span>
-                        互动
+                        互联
                         <span>
                         </span>
                         移动
@@ -411,7 +418,7 @@
                         成功案例
                     </div>
                     <div class="title min">
-                        凤凰办公的产品，全方位为您提供服务
+                        与医院管理者同行 | 助力公立医院进入高质量发展的新阶段
                     </div>
                     {ms:channel type="self" typeid='1438711778957242369'}
                     <div class="caseBanner">
@@ -595,6 +602,8 @@
         },
     })
     var mySwiper = new Swiper('.swiper-container', {
+        loop: true,
+        speed: 500,
         autoplay: 3000,
         mousewheel: {
             releaseOnEdges: true,//PC端释放滑动

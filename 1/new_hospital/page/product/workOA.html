@@ -65,8 +65,8 @@
         .new_banner {
             width: 100%;
             height: 375px;
-            background: url('{ms:global.host/}/{ms:global.style/}/images/banner_1.jpg') no-repeat;
-            background-size: cover;
+            /* background: url('{ms:global.host/}/{ms:global.style/}/images/banner_1.jpg') no-repeat;
+            background-size: cover; */
             position: relative;
             z-index: 1;
         }
@@ -594,24 +594,22 @@
 <body>
     <div class="wrapper" id="app">
         <#include "head.html" />
-        <div class="new_banner">
+        <#assign parenttitle=field.typetitle>
+        {ms:channel typeid='1418535046827040770' type='self'}
+        {ms:arclist artid='1476476777122738178'}
+        <div class="new_banner" style="background: url('{ms:global.host/}{@ms:file field.litpic/}') 100% 100% no-repeat;background-size: cover;background-position: center;">
             <div class="bannerText">
                 <div class="bannerText_child">
-                    <div class="title">${field.typetitle}</div>
-                    {ms:channel typeid='1418535046827040770' type='self'}
-                        {ms:arclist artid='1476476777122738178'}
-                        <div class="desc">${field.content}</div>
-                        {/ms:arclist}
-                    {/ms:channel}
-                    <!-- <p class="desc">解决全周期、全领域办公需求
-                    </p>
-                    <p class="desc" style="margin-top: 20px;">基于平台化的产品架构，随需定制功能应用</p> -->
+                    <div class="title">${parenttitle}</div>
+                    <div class="desc">${field.content}</div>
                     <p class="btn" @click="handleOpen">
                         申请试用
                     </p>
                 </div>
             </div>
         </div>
+        {/ms:arclist}
+        {/ms:channel}
         <div class="center">
             <div class="nav_wrap" :class="{active:isFixed}" ref="anchor">
                 <div class="nav">

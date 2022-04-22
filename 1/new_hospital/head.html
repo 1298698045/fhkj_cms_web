@@ -23,8 +23,8 @@
                         <div class="twoNav">
                             <i class="arrow"></i>
                             {ms:channel type='son' flag='nav2' orderby='sort'}
-                            <p class="navText">
-                                <a href="<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>">
+                            <p class="navText" @click="gotoHref('<#if field.type==3>{ms:global.url/}${field.typeurl}<#else>{ms:global.url/}${field.typelink}</#if>')">
+                                <a href="#">
                                     ${field.typetitle}</p>
                                 </a>
                             {/ms:channel}

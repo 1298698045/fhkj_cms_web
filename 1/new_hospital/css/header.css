@@ -19,8 +19,9 @@ body{
     justify-content: space-between;
 }
 .header .nav .left .logo{
-    width: 128px;
-    height: 44px;
+    width: 151px;
+    height: 35px;
+    cursor: pointer;
 }
 .header .nav .left .logo img{
     width: 100%;
@@ -49,7 +50,7 @@ body{
     font-weight: bold;
 }
 .header .cen .menu .lis .twoNav{
-    width: 185px;
+    /* width: 185px; */
     position: absolute;
     margin: 0;
     padding: 4px 0;
@@ -86,7 +87,7 @@ body{
     border-bottom:16px solid #fff;
 }
 .header .cen .menu .lis .twoNav .navText{
-    padding: 5px 12px;
+    padding: 5px 24px;
     color: rgba(0, 0, 0, 0.85);
     font-weight: normal;
     font-size: 14px;
@@ -238,6 +239,7 @@ body{
     height: 30px;
     background: #ffffff;
     border-radius: 50%;
+    cursor: pointer;
 }
 .contSix .footerBar .box-wrap  .qrCode_wrap .row p img{
     width: 100%;
